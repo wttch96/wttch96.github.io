@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -16,26 +16,26 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="Wttch">
   <meta name="keywords" content="">
   
     <meta name="description" content="反射是我喜欢喜欢 java 的一个重要原因，它在保证静态语言特性的同时，为你提供了一些动态的特性，你可以通过反射做一些很令人惊奇的事情。本文将通过反射和继承来让你获取泛型的运行时类型。 java 泛型使用的是 type erasure。它的泛型代码只有一份，泛型实现需要在编译和运行时都进行一定的操作。它的反射机制也为我们获取运行时泛型类型提供了一些接口：java.lang.reflect.Type">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java范型运行时类型获取">
 <meta property="og:url" content="https://blog.wttch.com/post/java/java%E8%8C%83%E5%9E%8B%E8%BF%90%E8%A1%8C%E6%97%B6%E7%B1%BB%E5%9E%8B%E8%8E%B7%E5%8F%96.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Wttch&#39;s Blog">
 <meta property="og:description" content="反射是我喜欢喜欢 java 的一个重要原因，它在保证静态语言特性的同时，为你提供了一些动态的特性，你可以通过反射做一些很令人惊奇的事情。本文将通过反射和继承来让你获取泛型的运行时类型。 java 泛型使用的是 type erasure。它的泛型代码只有一份，泛型实现需要在编译和运行时都进行一定的操作。它的反射机制也为我们获取运行时泛型类型提供了一些接口：java.lang.reflect.Type">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-29T09:02:16.000Z">
 <meta property="article:modified_time" content="2022-05-13T15:59:53.302Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Wttch">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="反射">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>java范型运行时类型获取 - Hexo</title>
+  <title>java范型运行时类型获取 - Wttch&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -119,7 +119,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -131,7 +131,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -143,7 +143,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -155,7 +155,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -167,7 +167,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -206,7 +206,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Home</span>
+                  <span>首页</span>
                 </div>
               </a>
             </div>
@@ -220,7 +220,7 @@
               <a href="/archives/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-archive-fill"></i>
-                  <span>Archives</span>
+                  <span>归档</span>
                 </div>
               </a>
             </div>
@@ -234,7 +234,7 @@
               <a href="/categories/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-category-fill"></i>
-                  <span>Categories</span>
+                  <span>分类</span>
                 </div>
               </a>
             </div>
@@ -248,7 +248,7 @@
               <a href="/tags/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-tags-fill"></i>
-                  <span>Tags</span>
+                  <span>标签</span>
                 </div>
               </a>
             </div>
@@ -262,7 +262,7 @@
               <a href="/about/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-user-fill"></i>
-                  <span>About</span>
+                  <span>关于</span>
                 </div>
               </a>
             </div>
@@ -273,19 +273,19 @@
             <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
               <div class="mobile-grid-item">
                 <i class="iconfont icon-search"></i>
-                <span>Search</span>
+                <span>搜索</span>
               </div>
             </a>
           </div>
         
         
           <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
-               data-label-light="Light"
-               data-label-dark="Dark">
+               data-label-light="开灯"
+               data-label-dark="关灯">
             <a href="javascript:;" aria-label="Color Toggle">
               <div class="mobile-grid-item">
                 <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
-                <span id="mobile-color-toggle-label">Dark</span>
+                <span id="mobile-color-toggle-label">关灯</span>
               </div>
             </a>
           </div>
@@ -316,7 +316,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2022-03-29 17:02" pubdate>
-          March 29, 2022 pm
+          2022年3月29日 下午
         </time>
       </span>
     
@@ -327,7 +327,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k words
+          2k 字
         
       </span>
     
@@ -338,7 +338,7 @@
         
         
         
-          17 mins
+          17 分钟
         
       </span>
     
@@ -432,26 +432,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Author</div>
-          <div>John Doe</div>
+          <div>作者</div>
+          <div>Wttch</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>March 29, 2022</div>
+          <div>发布于</div>
+          <div>2022年3月29日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Licensed under</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
@@ -474,7 +474,7 @@
                       <a href="/post/wordpress-docker-nginx%E5%AE%89%E8%A3%85wordpress.html" title="wordpress+docker+nginx安装wordpress">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">wordpress+docker+nginx安装wordpress</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -483,7 +483,7 @@
                     
                       <a href="/post/%E4%BF%AE%E6%94%B9mac%E5%90%AF%E5%8A%A8%E5%8F%B0%E7%A8%8B%E5%BA%8F%E5%9B%BE%E6%A0%87%E5%A4%A7%E5%B0%8F.html" title="修改mac启动台程序图标大小">
                         <span class="hidden-mobile">修改mac启动台程序图标大小</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -504,7 +504,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -560,7 +560,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -568,7 +568,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -838,7 +838,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>
