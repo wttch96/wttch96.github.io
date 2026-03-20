@@ -1,1 +1,922 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><link href="/static/css/chunk-libs.eebac533.css" rel="stylesheet"><link href="/static/css/app.0d31776f.css" rel="stylesheet"><!-- hexo injector head_end start --><script rel="prefetch" async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/components/prism-core.js" data-manual></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/toolbar/prism-toolbar.min.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/themes/prism.min.css"/><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/toolbar/prism-toolbar.min.css"/><link rel="stylesheet" href="https://fonts.loli.net/css?family=Rubik" /><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/valine/1.4.9/Valine.min.js"></script><script rel="preload" src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.10.0/dist/av-min.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body id="body-container"><noscript><strong>We're sorry but Aurora Blog doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script>(function(e){function t(t){for(var a,n,u=t[0],i=t[1],c=t[2],l=0,p=[];l<u.length;l++)n=u[l],Object.prototype.hasOwnProperty.call(o,n)&&o[n]&&p.push(o[n][0]),o[n]=0;for(a in i)Object.prototype.hasOwnProperty.call(i,a)&&(e[a]=i[a]);f&&f(t);while(p.length)p.shift()();return s.push.apply(s,c||[]),r()}function r(){for(var e,t=0;t<s.length;t++){for(var r=s[t],a=!0,n=1;n<r.length;n++){var u=r[n];0!==o[u]&&(a=!1)}a&&(s.splice(t--,1),e=i(i.s=r[0]))}return e}var a={},n={runtime:0},o={runtime:0},s=[];function u(e){return i.p+"static/js/"+({404:"404",about:"about",archives:"archives",categories:"categories",page:"page",post:"post",result:"result",tags:"tags"}[e]||e)+"."+{404:"00d640a8",about:"024aacd1",archives:"574ac664",categories:"90aa5475",page:"a02618ad",post:"cebfbaa4",result:"39470350",tags:"2ad613f5"}[e]+".js"}function i(t){if(a[t])return a[t].exports;var r=a[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.e=function(e){var t=[],r={404:1,about:1,archives:1,categories:1,page:1,post:1,result:1,tags:1};n[e]?t.push(n[e]):0!==n[e]&&r[e]&&t.push(n[e]=new Promise((function(t,r){for(var a="static/css/"+({404:"404",about:"about",archives:"archives",categories:"categories",page:"page",post:"post",result:"result",tags:"tags"}[e]||e)+"."+{404:"1a6cd5bd",about:"32dfa3b0",archives:"c0d49bd5",categories:"10e2be12",page:"749ad047",post:"9f951a60",result:"10e2be12",tags:"10e2be12"}[e]+".css",o=i.p+a,s=document.getElementsByTagName("link"),u=0;u<s.length;u++){var c=s[u],l=c.getAttribute("data-href")||c.getAttribute("href");if("stylesheet"===c.rel&&(l===a||l===o))return t()}var p=document.getElementsByTagName("style");for(u=0;u<p.length;u++){c=p[u],l=c.getAttribute("data-href");if(l===a||l===o)return t()}var f=document.createElement("link");f.rel="stylesheet",f.type="text/css",f.onload=t,f.onerror=function(t){var a=t&&t.target&&t.target.src||o,s=new Error("Loading CSS chunk "+e+" failed.\n("+a+")");s.code="CSS_CHUNK_LOAD_FAILED",s.request=a,delete n[e],f.parentNode.removeChild(f),r(s)},f.href=o;var d=document.getElementsByTagName("head")[0];d.appendChild(f)})).then((function(){n[e]=0})));var a=o[e];if(0!==a)if(a)t.push(a[2]);else{var s=new Promise((function(t,r){a=o[e]=[t,r]}));t.push(a[2]=s);var c,l=document.createElement("script");l.charset="utf-8",l.timeout=120,i.nc&&l.setAttribute("nonce",i.nc),l.src=u(e);var p=new Error;c=function(t){l.onerror=l.onload=null,clearTimeout(f);var r=o[e];if(0!==r){if(r){var a=t&&("load"===t.type?"missing":t.type),n=t&&t.target&&t.target.src;p.message="Loading chunk "+e+" failed.\n("+a+": "+n+")",p.name="ChunkLoadError",p.type=a,p.request=n,r[1](p)}o[e]=void 0}};var f=setTimeout((function(){c({type:"timeout",target:l})}),12e4);l.onerror=l.onload=c,document.head.appendChild(l)}return Promise.all(t)},i.m=e,i.c=a,i.d=function(e,t,r){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},i.r=function(e){"undefined"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&"object"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(i.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var a in e)i.d(r,a,function(t){return e[t]}.bind(null,a));return r},i.n=function(e){var t=e&&e.__esModule?function(){return e["default"]}:function(){return e};return i.d(t,"a",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p="/",i.oe=function(e){throw console.error(e),e};var c=window["webpackJsonp"]=window["webpackJsonp"]||[],l=c.push.bind(c);c.push=t,c=c.slice();for(var p=0;p<c.length;p++)t(c[p]);var f=l;r()})([]);</script><script src="/static/js/chunk-libs.dc6146cd.js"></script><script src="/static/js/app.6d2c358d.js"></script></body></html>
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、Java 内存区域与内存溢出异常1.1 运行时数据区域java虚拟机在执行java程序的过程中会把它管理的内存划分为若干个不同的数据区域。这些区域各有各自的用途，以及创建时间和销毁时间，有的区域随着虚拟机的进程的启动而一直存在，有些区域则是依赖用户线程的启动和结束而建立和销毁。根据《Java虚拟机规范》的规定，java虚拟机的内存将会包括几个运行时数据区域：   1.1.1 程序计数器程序计数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解java虚拟机（一）">
+<meta property="og:url" content="https://blog.wttch.com/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、Java 内存区域与内存溢出异常1.1 运行时数据区域java虚拟机在执行java程序的过程中会把它管理的内存划分为若干个不同的数据区域。这些区域各有各自的用途，以及创建时间和销毁时间，有的区域随着虚拟机的进程的启动而一直存在，有些区域则是依赖用户线程的启动和结束而建立和销毁。根据《Java虚拟机规范》的规定，java虚拟机的内存将会包括几个运行时数据区域：   1.1.1 程序计数器程序计数">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.wttch.com/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png">
+<meta property="og:image" content="https://blog.wttch.com/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89/HotSpot%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="https://blog.wttch.com/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89/HotSpot%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80.png">
+<meta property="og:image" content="https://blog.wttch.com/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89/%E9%80%9A%E8%BF%87%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE%E5%AF%B9%E8%B1%A1.png">
+<meta property="og:image" content="https://blog.wttch.com/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89/%E9%80%9A%E8%BF%87%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88%E8%AE%BF%E9%97%AE%E5%AF%B9%E8%B1%A1.png">
+<meta property="og:image" content="https://blog.wttch.com/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89/hprof%E6%96%87%E4%BB%B6%E9%A2%84%E8%A7%88.png">
+<meta property="article:published_time" content="2022-05-13T02:54:44.000Z">
+<meta property="article:modified_time" content="2022-05-14T05:45:03.454Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="jvm">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.wttch.com/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png">
+  
+  
+  
+  <title>深入理解java虚拟机（一） - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.wttch.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Archives</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>Categories</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>Tags</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="深入理解java虚拟机（一）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-13 10:54" pubdate>
+          May 13, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          64 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">深入理解java虚拟机（一）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="一、Java-内存区域与内存溢出异常"><a href="#一、Java-内存区域与内存溢出异常" class="headerlink" title="一、Java 内存区域与内存溢出异常"></a>一、Java 内存区域与内存溢出异常</h1><h2 id="1-1-运行时数据区域"><a href="#1-1-运行时数据区域" class="headerlink" title="1.1 运行时数据区域"></a>1.1 运行时数据区域</h2><p>java虚拟机在执行java程序的过程中会把它管理的内存划分为若干个不同的数据区域。这些区域各有各自的用途，以及创建时间和销毁时间，有的区域随着虚拟机的进程的启动而一直存在，有些区域则是依赖用户线程的启动和结束而建立和销毁。根据《Java虚拟机规范》的规定，java虚拟机的内存将会包括几个运行时数据区域：</p>
+<img src="/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png" srcset="/img/loading.gif" lazyload class="">
+
+<h3 id="1-1-1-程序计数器"><a href="#1-1-1-程序计数器" class="headerlink" title="1.1.1 程序计数器"></a>1.1.1 程序计数器</h3><p>程序计数器(Program Counter Register)是一块较小的内存空间，可以当作程序执行的行号指示器。它用来控制程序的分支、循环、跳转、异常处理、线程恢复等基础功能。</p>
+<p>因为每个线程都是独立执行的，为了能够在切换线程后能恢复到正确的执行位置，每个线程都需要有独立的程序计数器，独立存储互不影响，这类内存区域称为“线程私有”内存。</p>
+<p>如果正在执行Java方法，则记录正在执行的虚拟机字节码指令的地址，如果正在执行本地方法，这个计数器则应为空(Underfined)。此区域是《Java虚拟机规范》中没有规定任何OutOfMemoryError情况的区域。</p>
+<h3 id="1-1-2-Java虚拟机栈"><a href="#1-1-2-Java虚拟机栈" class="headerlink" title="1.1.2 Java虚拟机栈"></a>1.1.2 Java虚拟机栈</h3><p>与程序计数器一样，虚拟机栈(Java Virtual Machine Stack)也是线程私有的，他的生命周期与线程相同。虚拟机栈描述的是Java方法执行的线程内存模型：方法执行时，Java虚拟机都会同步创建一个栈帧(Stack Frame)用于存储局部变量表、操作数栈、动态连接、方法出口等信息。每个方法的调用到结束，就对应栈帧在虚拟机栈中入栈和出栈的过程。</p>
+<p>我们常关注的内存区域的“堆”和“栈”中“栈”，通常就是虚拟机栈，实际上应该指的是虚拟机栈中的局部变量表部分。</p>
+<p>局部变量表存放了Java虚拟机基本的数据类型（原始数据类型）、对象引用（类引用、数组引用、接口引用）和returnAddress类型（指向一条字节码指令的地址，returnAddress类型与Java编程语言类型没有直接关联）。</p>
+<p>这些数据类型在局部变量表中都以局部变量槽（Solt）来表示，其中long、double都会占用两个槽，其余的数据类型只有一个。具体的大小还要和虚拟机的具体实现相关，如果一个槽可能占32个比特、64个比特。</p>
+<p>《Java虚拟机规范》中，虚拟机栈中规定了两种异常状况：如果线程请求的栈深度大于虚拟机允许的深度，将抛出StackOverflowError（最常见的就是循环调用）；如果虚拟机栈容量可以动态扩展（和虚拟机的实现有关，Classic虚拟机允许扩展，HotSpot是不允许的，所以只要申请栈空间成功了就不会出现OOM，如果申请失败会出现OOM），当栈扩展时无法申请到足够的内存则会跑出OutOfMemoryError。</p>
+<h3 id="1-1-3-本地方法栈"><a href="#1-1-3-本地方法栈" class="headerlink" title="1.1.3 本地方法栈"></a>1.1.3 本地方法栈</h3><p>本地方法栈（Native Method Stacks）与虚拟机栈的作用非常相似，一个是为执行Java方法服务，一个是为执行本地方法服务。《Java虚拟机规范》中对其没有做强制规定（Hotspot甚至把它合二为一），两者都会抛出StackOverflowError和OOM。</p>
+<h3 id="1-1-4-Java堆"><a href="#1-1-4-Java堆" class="headerlink" title="1.1.4 Java堆"></a>1.1.4 Java堆</h3><p>Java堆是垃圾收集器管理的内存区域，因此也被称为“GC堆”。此内存区域的唯一目的就是存放对象实例，Java世界“几乎”所有的对象实例都在这里分配内存。垃圾收集器大部分都是基于分代收集设计的，所以Java堆中经常会出现“新生代”、“老年代”、“永久代”、“Eden空间”、“From Survivor空间”、“To Survivor空间”名词。</p>
+<p>从分配内存的角度看，所有线程共享的Java堆中可以划分出多个线程私有的分配缓冲区（Thread Local Allocation Buffer，TLAB），以提升对象分配时的效率。</p>
+<p>Java堆既可以被实现成固定大小，也可以是可扩展的，不过当前主流的Java虚拟机都是按照可扩展来实现的（通过参数-Xmx和-Xms设定）。如果Java堆中没有内存完成实例分配，并且堆也无法扩展时，就会抛出OOM异常。</p>
+<h3 id="1-1-5-方法区"><a href="#1-1-5-方法区" class="headerlink" title="1.1.5 方法区"></a>1.1.5 方法区</h3><p>方法区（Method Area）与Java堆一样，是各个线程共享的内存区域，它用于存储被虚拟机加载的类型信息、常量、静态变量、即时编译器编译后的代码缓存等区域。虽然《Java虚拟机规范》中把方法区描述为堆的一个逻辑部分，但它却有一个别名叫做“非堆”（Non-Heap），目的是为了和Java堆区分开来。</p>
+<p>方法区和永生代不是等价的，具体的虚拟机的实现是不同的。《Java虚拟机规范》对方法区的约束是非常宽松的，甚至可以不实现垃圾收集。并不是进入方法区就如同永生代的名字一样“永久”存在，这区域的回收目标主要是对常量池的回收和对类型的卸载。如果方法区无法满足新的内存分配需求时，将抛出OOM异常。</p>
+<h3 id="1-1-6-运行时常量池"><a href="#1-1-6-运行时常量池" class="headerlink" title="1.1.6 运行时常量池"></a>1.1.6 运行时常量池</h3><p>运行时常量池（Runtime Constant Pool）是方法区的一部分。Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项信息是常量池表（Constant Pool Table），用来存放编译期生成的各种字面量与符号引用，这部分内容将在类加载后存放到方法区的运行时常量池中。</p>
+<p>运行时常量池对于Class文件常量池的另外一个重要的特征就是具有动态性，有些特性可以在运行时将常量放入池中，比如<code>String#intern()</code>方法。</p>
+<p>运行时常量池在无法申请到内存的时候也会抛出OOM异常。</p>
+<h3 id="1-1-7-直接内存（堆外内存）"><a href="#1-1-7-直接内存（堆外内存）" class="headerlink" title="1.1.7 直接内存（堆外内存）"></a>1.1.7 直接内存（堆外内存）</h3><p>Java应用程序通过直接方法（Unsafe类、本地方法等）申请的内存，这部分内存不会受到Java堆大小的限制，当内存超过物理内存限制的时候也会导致出现OOM异常。</p>
+<h2 id="1-2-HotSpot虚拟机对象探秘"><a href="#1-2-HotSpot虚拟机对象探秘" class="headerlink" title="1.2 HotSpot虚拟机对象探秘"></a>1.2 HotSpot虚拟机对象探秘</h2><h3 id="1-2-1-对象的创建"><a href="#1-2-1-对象的创建" class="headerlink" title="1.2.1 对象的创建"></a>1.2.1 对象的创建</h3><p>语言层面上可以简单通过new、clone、反射、反序列化等方式创建一个对象。</p>
+<p>HotSpot虚拟机对象创建过程如下图所示：</p>
+<img src="/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89/HotSpot%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E8%BF%87%E7%A8%8B.png" srcset="/img/loading.gif" lazyload class="">
+
+<ul>
+<li><strong>指针碰撞（Bump The Pointer）：</strong>假设内存规整，使用的内存和空闲的内存各放一边，中间放一个指针来作为分界，分配内存就是将指针向空闲空间移动一个和对象大小相等的距离；</li>
+<li><strong>空闲列表（Free List）：</strong>使用的内存和空闲内存交错，虚拟机维护一个列表，记录可用的内存，然后从列表中寻找一块足够大的内存；</li>
+</ul>
+<p>一般内存是否规整又由所采用的垃圾收集器是否带有空间压缩功能（Compact）能力决定。因此当使用Serial、ParNew等压缩整理过程的收集器时，系统采用的分配算法是指针碰撞，简单而高效；当使用CMS这种基于清除（Sweep）算法的收集器时，理论上只能采用复杂的空间列表来分配。</p>
+<p>另一个要考虑的问题就是并发，怎么保证多个线程同时分配内存的情况。解决这个问题有两个可选方案：</p>
+<ol>
+<li>对分配内存进行同步——实际上采用CAS配上失败重试的方法保证更新操作的原子性；</li>
+<li>每个线程在Java堆中预先分配一小块内存：本地线程分配缓冲（Thread Local Allocation Buffer，TLAB），只有本地缓冲区用完了才会需要同步锁定。虚拟机是否使用TLAB，可以通过<code>-XX:+/-UseTLAB</code>参数来决定。</li>
+</ol>
+<p>初始化零值，如果使用TLAB的话，这项工作可以提现到TLAB分配时顺便进行。</p>
+<p>设置对象头信息，例如这是哪个类的实例、如何找到类的元数据信息、对象的哈希码（实际是调用<code>Object#hashCode()</code>时才会计算）、对象的GC分代年龄、是否启用偏向锁等信息。</p>
+<p>到这时，从虚拟机视角一个对象已经产生了，从Java程序视角来看，对象创建才刚刚开始——构造函数（<init>()方法还没有执行），所有的字段都为默认的零值，其他资源和状态也没有初始化。一般来说new指令后接着执行<init>()方法，这样在Java视角里对象才会被创建。</p>
+<h3 id="1-2-2-对象内存布局"><a href="#1-2-2-对象内存布局" class="headerlink" title="1.2.2 对象内存布局"></a>1.2.2 对象内存布局</h3><p>HotSpot虚拟机中，对象在内存中的存储布局分为三个部分：对象头（Header）、实例数据（Instance Data）和对齐填充（Padding）。</p>
+<img src="/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89/HotSpot%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>对象头一般包含两类信息：</p>
+<ol>
+<li><strong>Mark Word：</strong>存储对象自身运行时数据，如哈希码、GC分代年龄、所状态标志、线程持有的锁、偏向线程ID、偏向时间戳等（大小和虚拟机位数相关）；</li>
+<li><strong>Klass Pointer：</strong>对象指向它的类的元数据的指针，虚拟机通过这个指针来确定这个对象是哪个类的实例；如果对象是Java数组，还有一块记录数组长度的数据，虚拟机可以确定普通对象的大小，但是数组长度不确定，就无法算出数组的实际大小；为了节约内存可以使用选项 -XX:+UseCompressedOops 开启指针压缩，其中 oop即ordinary object pointer 普通对象指针；</li>
+</ol>
+<p>实例数据部分才是真正存储的有效信息，即我们定义的各种类型的字段内容，无论是父类继承还是子类的字段。字段顺序会受HotSpot虚拟机分配策略参数<code>-XX:FieldsAllocationStyle</code>和字段在Java源码中的定义顺序影响。如果HotSpot虚拟机参数<code>+XX:CompactFields</code>为true（默认为true），子类的字段可以插在父类的空隙中，以节省空间。</p>
+<p>对象填充就是占位符的作用，HotSpot虚拟机要求对象起始地址都是8字节的整倍数。所以就需要填充来对齐。</p>
+<h3 id="1-2-3-对象的访问定位"><a href="#1-2-3-对象的访问定位" class="headerlink" title="1.2.3 对象的访问定位"></a>1.2.3 对象的访问定位</h3><p>对象的访问方式由虚拟机实现而定，主流的访问方式有使用句柄和直接访问指针两种：</p>
+<ul>
+<li><strong>句柄访问：</strong>Java堆中分出一块内存作为句柄池，reference中存储对象句柄地址，句柄包含了对象实例数据和类型数据各自的地址；</li>
+<li><strong>直接指针访问：</strong>Java堆中对象的内存中就放入对象类型数据，reference就是对象地址；</li>
+</ul>
+<img src="/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89/%E9%80%9A%E8%BF%87%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE%E5%AF%B9%E8%B1%A1.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89/%E9%80%9A%E8%BF%87%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88%E8%AE%BF%E9%97%AE%E5%AF%B9%E8%B1%A1.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>直接使用指针最大的好处就是速度快，HotSpot主要使用直接指针方式进行访问（如果使用了Shenandoah收集器，会有一次额外转发）。</p>
+<h2 id="1-3-OOM异常"><a href="#1-3-OOM异常" class="headerlink" title="1.3 OOM异常"></a>1.3 OOM异常</h2><h3 id="1-3-1-Java堆溢出"><a href="#1-3-1-Java堆溢出" class="headerlink" title="1.3.1 Java堆溢出"></a>1.3.1 Java堆溢出</h3><p>堆最小值参数<code>-Xms</code>和最大值<code>-Xmx</code>设置成一样可以避免自动扩展，通过参数<code>-XX:+HeapDumpOnOutOfMemoryError</code>可以让虚拟机在出现OOM的时候自动Dump内存堆转储快照。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * VM args: -Xms20m -Xmx20m -XX:+HeapDumpOnOutOfMemoryError</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> wttch</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Demo</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>        <span class="hljs-type">var</span> <span class="hljs-variable">list</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Demo</span>());<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus">java<span class="hljs-selector-class">.lang</span><span class="hljs-selector-class">.OutOfMemoryError</span>: Java heap space<br>Dumping heap to java_pid58590<span class="hljs-selector-class">.hprof</span> ...<br>Heap dump file created <span class="hljs-selector-attr">[37138671 bytes in 0.091 secs]</span><br>Exception <span class="hljs-keyword">in</span> thread <span class="hljs-string">&quot;main&quot;</span> java<span class="hljs-selector-class">.lang</span><span class="hljs-selector-class">.OutOfMemoryError</span>: Java heap space<br>	at Demo<span class="hljs-selector-class">.main</span>(Demo<span class="hljs-selector-class">.java</span>:<span class="hljs-number">16</span>)<br></code></pre></td></tr></table></figure>
+
+<p>使用工具（如Eclipse Memory Analyzer，Idea也可以直接打开.hprof文件）分析，先确认是内存泄漏（Memory Leak）还是内存溢出（Memory Overflow）。</p>
+<img src="/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89/hprof%E6%96%87%E4%BB%B6%E9%A2%84%E8%A7%88.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>内存泄漏：查看内存泄漏对象的GC Roots引用链，找到内存泄漏对象的引用路径，从而找出为什么无法回收它们。</p>
+<p>不是内存泄漏：看那些对象是必须存活的，调整参数或者检查让生命周期过长的对象设计是否合理。</p>
+<h3 id="1-3-2-虚拟机栈和本地方法栈溢出"><a href="#1-3-2-虚拟机栈和本地方法栈溢出" class="headerlink" title="1.3.2 虚拟机栈和本地方法栈溢出"></a>1.3.2 虚拟机栈和本地方法栈溢出</h3><p>HotSpot虚拟机并不区分虚拟机栈和本地方法栈，对HotSpot来说<code>-Xoss</code>参数（设置本地方法栈大小）虽然存在但没有任何效果，栈容量只能由<code>-Xss</code>参数来设定。</p>
+<p>《Java虚拟机规范》在此处定义了两种异常：</p>
+<ol>
+<li>如果线程请求的栈深度大雨虚拟机所允许的最大深度，将会抛出StackOverflowError；</li>
+<li>如果虚拟机的栈内存允许动态扩展，当扩展栈容量无法申请到足够的内存时，将抛出OOM；</li>
+</ol>
+<p>HotSpot虚拟机是不支持栈的动态扩展的，所以只会因为栈容量无法容纳新的栈帧而抛出StackOverflowError。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * JVM args: -Xss1m</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> wttch</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JvmStackSOF</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">stackLength</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">stackLeak</span><span class="hljs-params">()</span> &#123;<br>        stackLength++;<br>        stackLeak();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">JvmStackSOF</span> <span class="hljs-variable">stackSOF</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JvmStackSOF</span>();<br>        <span class="hljs-keyword">try</span> &#123;<br>            stackSOF.stackLeak();<br>        &#125; <span class="hljs-keyword">catch</span> (Throwable e) &#123;<br>            System.out.println(<span class="hljs-string">&quot;Stack Length:&quot;</span> + stackSOF.stackLength);<br>            <span class="hljs-keyword">throw</span> e;<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>异常信息：</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs julia">&gt; <span class="hljs-built_in">Task</span> :JvmStackSOF.main() FAILED<br>Stack Length:<span class="hljs-number">14807</span><br><span class="hljs-built_in">Exception</span> <span class="hljs-keyword">in</span> thread <span class="hljs-string">&quot;main&quot;</span> java.lang.<span class="hljs-built_in">StackOverflowError</span><br></code></pre></td></tr></table></figure>
+
+<p>缩减栈内存容量（注意⚠️：虚拟机会有一个最小栈内存限制，小于该限制值虚拟机将无法启动）：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">JVM <span class="hljs-keyword">args</span>: -Xss500k<br></code></pre></td></tr></table></figure>
+
+<p>异常信息：</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs julia">&gt; <span class="hljs-built_in">Task</span> :JvmStackSOF.main() FAILED<br>Stack Length:<span class="hljs-number">4296</span><br><span class="hljs-built_in">Exception</span> <span class="hljs-keyword">in</span> thread <span class="hljs-string">&quot;main&quot;</span> java.lang.<span class="hljs-built_in">StackOverflowError</span><br></code></pre></td></tr></table></figure>
+
+<p>添加大量本地变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * JVM args: -Xss1m</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> wttch</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JvmStackSOF</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">stackLength</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">stackLeak</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">long</span> a1, a2, a3, a4, a5, a6, a7, a8, a9, a10;<br>        a1 = a2 = a3 = a4 = a5 = a6 = a7 = a8 = a9 = a10 = <span class="hljs-number">1L</span>;<br>        stackLength++;<br>        stackLeak();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">JvmStackSOF</span> <span class="hljs-variable">stackSOF</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JvmStackSOF</span>();<br>        <span class="hljs-keyword">try</span> &#123;<br>            stackSOF.stackLeak();<br>        &#125; <span class="hljs-keyword">catch</span> (Throwable e) &#123;<br>            System.out.println(<span class="hljs-string">&quot;Stack Length:&quot;</span> + stackSOF.stackLength);<br>            <span class="hljs-keyword">throw</span> e;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>异常信息：</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs julia">&gt; <span class="hljs-built_in">Task</span> :JvmStackSOF.main() FAILED<br>Stack Length:<span class="hljs-number">8940</span><br><span class="hljs-built_in">Exception</span> <span class="hljs-keyword">in</span> thread <span class="hljs-string">&quot;main&quot;</span> java.lang.<span class="hljs-built_in">StackOverflowError</span><br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>使用<code>-Xss</code>参数减少栈内存容量，抛出StackOverflowError，异常出现时输出的堆栈深度也会相应地减小；</li>
+<li>定义大量本地变量，增大此方法的本地变量表的长度，抛出异常时堆栈的深度也会相应的减少；</li>
+</ul>
+<h3 id="1-3-3-方法区和运行时常量池溢出"><a href="#1-3-3-方法区和运行时常量池溢出" class="headerlink" title="1.3.3 方法区和运行时常量池溢出"></a>1.3.3 方法区和运行时常量池溢出</h3><p>JDK8以后，运行时常量池是在堆内的，通过使用<code>-Xmx</code>参数限制对内存，产生运行时常量池的溢出。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * JVM args: -Xmx3m</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> wttch</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RuntimeConstantPoolOOM</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">var</span> <span class="hljs-variable">set</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;String&gt;();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;<br>            set.add(String.format(<span class="hljs-string">&quot;运行时常量：%d&quot;</span>, i).intern());<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>异常信息：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus">Exception <span class="hljs-keyword">in</span> thread <span class="hljs-string">&quot;main&quot;</span> java<span class="hljs-selector-class">.lang</span><span class="hljs-selector-class">.OutOfMemoryError</span>: Java heap space<br>	at java.base/java<span class="hljs-selector-class">.util</span><span class="hljs-selector-class">.Formatter</span><span class="hljs-selector-class">.format</span>(Formatter<span class="hljs-selector-class">.java</span>:<span class="hljs-number">2689</span>)<br>	at java.base/java<span class="hljs-selector-class">.util</span><span class="hljs-selector-class">.Formatter</span><span class="hljs-selector-class">.format</span>(Formatter<span class="hljs-selector-class">.java</span>:<span class="hljs-number">2625</span>)<br>	at java.base/java<span class="hljs-selector-class">.lang</span><span class="hljs-selector-class">.String</span><span class="hljs-selector-class">.format</span>(String<span class="hljs-selector-class">.java</span>:<span class="hljs-number">4140</span>)<br>	at com<span class="hljs-selector-class">.wttch</span><span class="hljs-selector-class">.demo</span><span class="hljs-selector-class">.RuntimeConstantPoolOOM</span><span class="hljs-selector-class">.main</span>(RuntimeConstantPoolOOM<span class="hljs-selector-class">.java</span>:<span class="hljs-number">15</span>)<br></code></pre></td></tr></table></figure>
+
+<p>方法区溢出不是特别好操作，在JDK8之前可以通过CGLib生成大量的动态类，JDK8之后“永生代”被“元空间”代替后方法区就更难迫使虚拟机产生方法区的溢出异常了。</p>
+<p>HotSpot提供了一些“元空间”的防御措施：</p>
+<ul>
+<li><code>-XX:MaxMetaspaceSize</code>：设置元空间最大值，默认是-1，即不限制，或者说受限于本地内存大小；</li>
+<li><code>-XX:MetaspaceSize</code>：元空间的初始空间大小，以字节为单位，达到该值就会触发垃圾收集器进行类型卸载，同时收集器会对该值进行调整：如果释放了大量空间，就是适当降低该值；如果释放了很少的空间，那么在不超过<code>-XX:MaxMetaspaceSize</code>适当提高该值；</li>
+<li><code>-XX:MinMetaspaceFreeRatio</code>：在垃圾收集之后控制最小的元空间剩余容量的百分比，可减少元空间不足导致的垃圾收集的频率。<code>-XX:MaxMetaSpaceFreeRatio</code>相反的功能。</li>
+</ul>
+<h3 id="1-3-4-本地内存溢出"><a href="#1-3-4-本地内存溢出" class="headerlink" title="1.3.4 本地内存溢出"></a>1.3.4 本地内存溢出</h3><p>直接内存导致的溢出，一般Heap Dump文件中不会看到有什么明显的异常信息，如果溢出后Dump文件很小，就有可能是直接内存溢出了。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/java/" class="print-no-link">#java</a>
+      
+        <a href="/tags/jvm/" class="print-no-link">#jvm</a>
+      
+        <a href="/tags/%E7%AC%94%E8%AE%B0/" class="print-no-link">#笔记</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>深入理解java虚拟机（一）</div>
+      <div>https://blog.wttch.com/post/java/jvm/深入理解java虚拟机/深入理解java虚拟机（一）.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 13, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%BA%8C%EF%BC%89.html" title="深入理解java虚拟机（二）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">深入理解java虚拟机（二）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/post/mysql/%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%8D%A1%E4%B8%80%E4%B8%8BMysql.html" title="系统的捡一下Mysql">
+                        <span class="hidden-mobile">系统的捡一下Mysql</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
