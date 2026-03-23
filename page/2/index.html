@@ -292,7 +292,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="要永远相信你的灵魂~"></span>
+            <span id="subtitle" data-typed-text="要永远相信你的灵魂~,要永远怀着一个感恩的心~"></span>
           
         </div>
 
@@ -645,7 +645,9 @@
       }
       var text = subtitle.getAttribute('data-typed-text');
       
-        typing(text);
+        var texts = ["要永远相信你的灵魂~","要永远怀着一个感恩的心~"];
+        var idx = Math.floor(Math.random() * texts.length);
+        typing(texts[idx]);
       
     })(window, document);
   </script>
