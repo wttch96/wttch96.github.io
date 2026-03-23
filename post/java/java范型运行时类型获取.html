@@ -22,7 +22,7 @@
     <meta name="description" content="反射是我喜欢喜欢 java 的一个重要原因，它在保证静态语言特性的同时，为你提供了一些动态的特性，你可以通过反射做一些很令人惊奇的事情。本文将通过反射和继承来让你获取泛型的运行时类型。 java 泛型使用的是 type erasure。它的泛型代码只有一份，泛型实现需要在编译和运行时都进行一定的操作。它的反射机制也为我们获取运行时泛型类型提供了一些接口：java.lang.reflect.Type">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java范型运行时类型获取">
-<meta property="og:url" content="https://blog.wttch.com/post/java/java%E8%8C%83%E5%9E%8B%E8%BF%90%E8%A1%8C%E6%97%B6%E7%B1%BB%E5%9E%8B%E8%8E%B7%E5%8F%96.html">
+<meta property="og:url" content="https://wttch96.github.io/post/java/java%E8%8C%83%E5%9E%8B%E8%BF%90%E8%A1%8C%E6%97%B6%E7%B1%BB%E5%9E%8B%E8%8E%B7%E5%8F%96.html">
 <meta property="og:site_name" content="Wttch&#39;s Blog">
 <meta property="og:description" content="反射是我喜欢喜欢 java 的一个重要原因，它在保证静态语言特性的同时，为你提供了一些动态的特性，你可以通过反射做一些很令人惊奇的事情。本文将通过反射和继承来让你获取泛型的运行时类型。 java 泛型使用的是 type erasure。它的泛型代码只有一份，泛型实现需要在编译和运行时都进行一定的操作。它的反射机制也为我们获取运行时泛型类型提供了一些接口：java.lang.reflect.Type">
 <meta property="og:locale" content="zh_CN">
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.wttch.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"wttch96.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -448,7 +448,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>java范型运行时类型获取</div>
-      <div>https://blog.wttch.com/post/java/java范型运行时类型获取.html</div>
+      <div>https://wttch96.github.io/post/java/java范型运行时类型获取.html</div>
     </div>
     <div class="license-meta">
       
