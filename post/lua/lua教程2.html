@@ -19,20 +19,23 @@
   <meta name="author" content="Wttch">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="AppleScript Tutorial:File Formats">
-<meta property="og:url" content="https://wttch96.github.io/post/AppleScript/Tutorial/File-Formats.html">
+    <meta name="description" content="lua 循环循环while 循环原型： 123while condition doend  for 循环原型： 123for var&#x3D;exp1,exp2,exp3 doend  repeat 循环原型： 123repeatuntil condition  和 while 循环不同，repeat 循环至少会执行一次循环体。 流程控制break 语句break 语句用于跳出当前循环。 goto 语句g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lua教程2.md">
+<meta property="og:url" content="https://wttch96.github.io/post/lua/lua%E6%95%99%E7%A8%8B2.html">
 <meta property="og:site_name" content="Wttch&#39;s Blog">
+<meta property="og:description" content="lua 循环循环while 循环原型： 123while condition doend  for 循环原型： 123for var&#x3D;exp1,exp2,exp3 doend  repeat 循环原型： 123repeatuntil condition  和 while 循环不同，repeat 循环至少会执行一次循环体。 流程控制break 语句break 语句用于跳出当前循环。 goto 语句g">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-09T13:51:02.000Z">
-<meta property="article:modified_time" content="2024-11-09T13:53:38.705Z">
+<meta property="article:published_time" content="2026-03-24T12:38:08.000Z">
+<meta property="article:modified_time" content="2026-03-24T14:40:27.246Z">
 <meta property="article:author" content="Wttch">
-<meta property="article:tag" content="AppleScript, 教程, macos">
+<meta property="article:tag" content="lua">
+<meta property="article:tag" content="教程">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>AppleScript Tutorial:File Formats - Wttch&#39;s Blog</title>
+  <title>lua教程2.md - Wttch&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -301,7 +304,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="AppleScript Tutorial:File Formats"></span>
+            <span id="subtitle" data-typed-text="lua教程2.md"></span>
           
         </div>
 
@@ -312,8 +315,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-11-09 21:51" pubdate>
-          2024年11月9日 晚上
+        <time datetime="2026-03-24 20:38" pubdate>
+          2026年3月24日 晚上
         </time>
       </span>
     
@@ -324,7 +327,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.5k 字
         
       </span>
     
@@ -335,7 +338,7 @@
         
         
         
-          1 分钟
+          13 分钟
         
       </span>
     
@@ -374,12 +377,51 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">AppleScript Tutorial:File Formats</h1>
+            <h1 id="seo-header">lua教程2.md</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h1 id="lua-循环"><a href="#lua-循环" class="headerlink" title="lua 循环"></a>lua 循环</h1><h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><h3 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h3><p>原型：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">while</span> condition <span class="hljs-keyword">do</span><br><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h3><p>原型：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">for</span> var=exp1,exp2,exp3 <span class="hljs-keyword">do</span><br><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="repeat-循环"><a href="#repeat-循环" class="headerlink" title="repeat 循环"></a>repeat 循环</h3><p>原型：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">repeat</span><br><br><span class="hljs-keyword">until</span> condition<br></code></pre></td></tr></table></figure>
+
+<p>和 <code>while</code> 循环不同，<code>repeat</code> 循环至少会执行一次循环体。</p>
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="break-语句"><a href="#break-语句" class="headerlink" title="break 语句"></a>break 语句</h3><p><code>break</code> 语句用于跳出当前循环。</p>
+<h3 id="goto-语句"><a href="#goto-语句" class="headerlink" title="goto 语句"></a>goto 语句</h3><p><code>goto</code> 语句用于无条件跳转到指定标签处执行代码。标签的定义格式为 <code>::label::</code>，可以在代码中使用 <code>goto label</code> 来跳转到该标签处执行代码。</p>
+<p>可以使用 <code>goto</code> 语句实验类似于 continue 的功能，例如：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">for</span> i = <span class="hljs-number">1</span>, <span class="hljs-number">10</span> <span class="hljs-keyword">do</span><br>    <span class="hljs-keyword">if</span> i ~= <span class="hljs-number">5</span> <span class="hljs-keyword">then</span><br>        <span class="hljs-keyword">goto</span> continue<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-built_in">print</span>(i)<br>    ::continue::<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>只会打印数字 5，因为当 <code>i</code> 不等于 5 时，会跳过打印语句直接进入下一次循环。</p>
+<h1 id="流程控制-1"><a href="#流程控制-1" class="headerlink" title="流程控制"></a>流程控制</h1><p>原型：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">if</span> condition <span class="hljs-keyword">then</span><br>  <span class="hljs-comment">-- code</span><br><span class="hljs-keyword">elseif</span> condition <span class="hljs-keyword">then</span><br>  <span class="hljs-comment">-- code</span><br><span class="hljs-keyword">else</span><br>  <span class="hljs-comment">-- code</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>原型：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">functionName</span> <span class="hljs-params">(arg1, arg2, ...)</span></span><br>  <span class="hljs-comment">-- body</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>可以在 <code>function</code> 前加 <code>local</code> 来定义局部函数。</p>
+<p>lua 接受可变参数，可以使用 <code>...</code> 来表示可变参数，在函数体内可以使用 <code>&#123;...&#125;</code> 来获取一个包含所有可变参数的表，或者使用 <code>select</code> 函数来获取特定位置的可变参数，例如 <code>select(1, ...)</code> 获取第一个可变参数，<code>select(2, ...)</code> 获取第二个可变参数，以此类推。<br><code>select(&#39;#&#39;, ...)</code> 可以获取可变参数的数量。</p>
+<p>lua 可以返回多个值，例如：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span><span class="hljs-params">()</span></span><br>  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span><br><span class="hljs-keyword">end</span><br><span class="hljs-keyword">local</span> a, b, c = example()<br><span class="hljs-built_in">print</span>(a, b, c) <span class="hljs-comment">-- 输出：1 2 3</span><br></code></pre></td></tr></table></figure>
+<p>如果函数返回的值比接收的变量多，超出的部分会被丢弃；如果函数返回的值比接收的变量少，缺少的部分会被赋值为 <code>nil</code>，例如：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span><span class="hljs-params">()</span></span><br>  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>, <span class="hljs-number">2</span><br><span class="hljs-keyword">end</span><br><span class="hljs-keyword">local</span> a, b, c = example()<br><span class="hljs-built_in">print</span>(a, b, c) <span class="hljs-comment">-- 输出：1 2 nil</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="lua-运算符"><a href="#lua-运算符" class="headerlink" title="lua 运算符"></a>lua 运算符</h1><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><p><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>^</code>, <code>//</code><br>其中 <code>^</code> 表示幂运算，<code>//</code> 表示整数除法。</p>
+<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><p><code>==</code>, <code>~=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></p>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p><code>and</code>, <code>or</code>, <code>not</code></p>
+<p><strong>三目运算</strong>：可以使用 <code>and</code> 和 <code>or</code> 来实现短路求值，例如：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> a = <span class="hljs-literal">true</span><br><span class="hljs-keyword">local</span> b = a <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;hello&quot;</span> <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;world&quot;</span><br><span class="hljs-built_in">print</span>(b) <span class="hljs-comment">-- 输出：hello</span><br></code></pre></td></tr></table></figure>
+<p>在这个例子中，<code>a</code> 是 <code>true</code>，所以 <code>b</code> 的值 是 “hello”；如果 <code>a</code> 是 <code>false</code>，那么 <code>b</code> 的值 就是 “world”。</p>
+<h2 id="其他运算符"><a href="#其他运算符" class="headerlink" title="其他运算符"></a>其他运算符</h2><p><code>..</code> 表示字符串连接运算符，例如：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> a = <span class="hljs-string">&quot;hello&quot;</span><br><span class="hljs-keyword">local</span> b = <span class="hljs-string">&quot;world&quot;</span><br><span class="hljs-keyword">local</span> c = a .. <span class="hljs-string">&quot; &quot;</span> .. b<br><span class="hljs-built_in">print</span>(c) <span class="hljs-comment">-- 输出：hello world</span><br></code></pre></td></tr></table></figure>
+
+<p><code>#</code> 表示长度运算符，可以用于字符串和表格，例如：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> a = <span class="hljs-string">&quot;hello&quot;</span><br><span class="hljs-keyword">local</span> b = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;<br><span class="hljs-built_in">print</span>(#a) <span class="hljs-comment">-- 输出：5</span><br><span class="hljs-built_in">print</span>(#b) <span class="hljs-comment">-- 输出：3</span><br></code></pre></td></tr></table></figure>
+<p><code>#</code> 用的是 <code>string.len</code> 函数来计算字符串的长度，使用的是 <code>table.maxn</code> 函数来计算表格的长度。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> a = <span class="hljs-string">&quot;abc&quot;</span><br><span class="hljs-keyword">local</span> b = <span class="hljs-string">&quot;你好&quot;</span><br><span class="hljs-built_in">print</span>(#a) <span class="hljs-comment">-- 输出：3</span><br><span class="hljs-built_in">print</span>(#b) <span class="hljs-comment">-- 输出：6</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -391,7 +433,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/AppleScript-%E6%95%99%E7%A8%8B-macos/" class="print-no-link">#AppleScript, 教程, macos</a>
+        <a href="/tags/lua/" class="print-no-link">#lua</a>
+      
+        <a href="/tags/%E6%95%99%E7%A8%8B/" class="print-no-link">#教程</a>
       
     </div>
   
@@ -403,8 +447,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>AppleScript Tutorial:File Formats</div>
-      <div>https://wttch96.github.io/post/AppleScript/Tutorial/File-Formats.html</div>
+      <div>lua教程2.md</div>
+      <div>https://wttch96.github.io/post/lua/lua教程2.html</div>
     </div>
     <div class="license-meta">
       
@@ -416,7 +460,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年11月9日</div>
+          <div>2026年3月24日</div>
         </div>
       
       
@@ -448,18 +492,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/post/lua/lua%E6%95%99%E7%A8%8B1.html" title="lua教程（一）基本语法和变量">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">lua教程（一）基本语法和变量</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/post/swift/swiftUI%E5%A4%9A%E7%AA%97%E5%8F%A3.html" title="swiftUI多窗口">
-                        <span class="hidden-mobile">swiftUI多窗口</span>
+                      <a href="/post/lua/lua%E6%95%99%E7%A8%8B1.html" title="lua教程（一）基本语法和变量">
+                        <span class="hidden-mobile">lua教程（一）基本语法和变量</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
