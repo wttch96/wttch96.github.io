@@ -1,0 +1,1123 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Wttch">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="使用mysql很久了，但没有系统的学习过mysql，看看漏掉了那些基础但又有用东西。  一、Mysql基础使用1.1 Mysql命令1. 命令结束符号一个命令要想执行必须使用;、\g、\G这几个符号之一作为结尾。 符号\g等同于;，是我们常用的命令结束语句。\G可以将数据表格转换为横向，即第一列为字段名，然后数据依次在后面的列，对字段很多的时候的查询展示很有帮助。 2. 可以一次提交多个命令例如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统的捡一下Mysql">
+<meta property="og:url" content="https://wttch96.github.io/post/mysql/%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%8D%A1%E4%B8%80%E4%B8%8BMysql.html">
+<meta property="og:site_name" content="Wttch&#39;s Blog">
+<meta property="og:description" content="使用mysql很久了，但没有系统的学习过mysql，看看漏掉了那些基础但又有用东西。  一、Mysql基础使用1.1 Mysql命令1. 命令结束符号一个命令要想执行必须使用;、\g、\G这几个符号之一作为结尾。 符号\g等同于;，是我们常用的命令结束语句。\G可以将数据表格转换为横向，即第一列为字段名，然后数据依次在后面的列，对字段很多的时候的查询展示很有帮助。 2. 可以一次提交多个命令例如">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-11T09:57:01.000Z">
+<meta property="article:modified_time" content="2026-03-22T04:00:06.258Z">
+<meta property="article:author" content="Wttch">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>系统的捡一下Mysql - Wttch&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"wttch96.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Wttch&#39;s 学习笔记📚📚</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="系统的捡一下Mysql"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-11 17:57" pubdate>
+          2022年5月11日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">系统的捡一下Mysql</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>使用mysql很久了，但没有系统的学习过mysql，看看漏掉了那些基础但又有用东西。</p>
+</blockquote>
+<h1 id="一、Mysql基础使用"><a href="#一、Mysql基础使用" class="headerlink" title="一、Mysql基础使用"></a>一、Mysql基础使用</h1><h2 id="1-1-Mysql命令"><a href="#1-1-Mysql命令" class="headerlink" title="1.1 Mysql命令"></a>1.1 Mysql命令</h2><h3 id="1-命令结束符号"><a href="#1-命令结束符号" class="headerlink" title="1. 命令结束符号"></a>1. 命令结束符号</h3><p>一个命令要想执行必须使用<code>;</code>、<code>\g</code>、<code>\G</code>这几个符号之一作为结尾。</p>
+<p>符号<code>\g</code>等同于<code>;</code>，是我们常用的命令结束语句。<code>\G</code>可以将数据表格转换为横向，即第一列为字段名，然后数据依次在后面的列，对字段很多的时候的查询展示很有帮助。</p>
+<h3 id="2-可以一次提交多个命令"><a href="#2-可以一次提交多个命令" class="headerlink" title="2. 可以一次提交多个命令"></a>2. 可以一次提交多个命令</h3><p>例如：三个语句同时混合上边的命令结束符号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; select now(); select now()\g select now()\G<br>+---------------------+<br>| now()               |<br>+---------------------+<br>| 2022-05-12 11:34:49 |<br>+---------------------+<br>1 row in set (0.000 sec)<br><br>+---------------------+<br>| now()               |<br>+---------------------+<br>| 2022-05-12 11:34:49 |<br>+---------------------+<br>1 row in set (0.000 sec)<br><br>*************************** 1. row ***************************<br>now(): 2022-05-12 11:34:49<br>1 row in set (0.000 sec)<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-使用-c放弃本次操作"><a href="#3-使用-c放弃本次操作" class="headerlink" title="3. 使用\c放弃本次操作"></a>3. 使用<code>\c</code>放弃本次操作</h3><p>可以使用如果你想放弃本次编写的命令，可以在输入的命令后边加上<code>\c</code>，比如这样：</p>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-variable">mysql</span>&gt; <span class="hljs-variable">SELECT</span> <span class="hljs-function"><span class="hljs-title"><span class="hljs-built_in">NOW</span></span>()\<span class="hljs-variable">c</span></span><br><span class="hljs-function"><span class="hljs-variable">mysql</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>如果不使用<code>\c</code>，那客户端会以为这是一个多行命令，还在一直傻傻的等你输入命令～</p>
+<h1 id="二、MySQL数据类型"><a href="#二、MySQL数据类型" class="headerlink" title="二、MySQL数据类型"></a>二、MySQL数据类型</h1><h2 id="2-1-MySQL整型类型"><a href="#2-1-MySQL整型类型" class="headerlink" title="2.1 MySQL整型类型"></a>2.1 MySQL整型类型</h2><table>
+<thead>
+<tr>
+<th><strong>类型</strong></th>
+<th><strong>占用的存储空间（单位：字节）</strong></th>
+<th>无符号数取值范围</th>
+<th>有符号数取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>TINYINT</code></td>
+<td>1</td>
+<td>$0\sim 2^8-1$</td>
+<td>$-2^7\sim 2^7-1$</td>
+</tr>
+<tr>
+<td><code>SMALLINT</code></td>
+<td>2</td>
+<td>$0\sim 2^{16}-1$</td>
+<td>$-2^{15}\sim -2^{15}-1$</td>
+</tr>
+<tr>
+<td><code>MEDIUMINT</code></td>
+<td>3</td>
+<td>$0\sim 2^{24}-1$</td>
+<td>$-2^{23}\sim 2^{23}-1$</td>
+</tr>
+<tr>
+<td><code>INT</code>&#x2F;<code>INTEGER</code></td>
+<td>4</td>
+<td>$0 \sim 2^{32} - 1$</td>
+<td>$-2^{31} \sim 2^{31}-1$</td>
+</tr>
+<tr>
+<td><code>BIGINT</code></td>
+<td>8</td>
+<td>$0 \sim 2^{64} - 1$</td>
+<td>$-2^{63} \sim 2^{63} - 1$</td>
+</tr>
+</tbody></table>
+<h2 id="2-2-MySQL浮点型类型"><a href="#2-2-MySQL浮点型类型" class="headerlink" title="2.2 MySQL浮点型类型"></a>2.2 MySQL浮点型类型</h2><table>
+<thead>
+<tr>
+<th><strong>类型</strong></th>
+<th><strong>占用的存储空间（单位：字节）</strong></th>
+<th><strong>绝对值最小非0值</strong></th>
+<th><strong>绝对值最大非0值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>FLOAT</code></td>
+<td>4</td>
+<td>±1.175494351E-38</td>
+<td>±3.402823466E+38</td>
+</tr>
+<tr>
+<td><code>DOUBLE</code></td>
+<td>8</td>
+<td>±2.2250738585072014E-308</td>
+<td>±1.7976931348623157E+308</td>
+</tr>
+</tbody></table>
+<h2 id="2-3-设置最大位数和小数位数"><a href="#2-3-设置最大位数和小数位数" class="headerlink" title="2.3 设置最大位数和小数位数"></a>2.3 设置最大位数和小数位数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs FLOAT```和```DOUBLE```后面可以跟上两个参数："><br>```sql<br>FLOAT(M, D)<br>DOUBLE(M, D)<br></code></pre></td></tr></table></figure>
+
+<p>可以用来限制存储到本列中的小数范围。其中</p>
+<ul>
+<li><code>M</code>表示该小数最多需要的十进制有效数字个数</li>
+<li><code>D</code>表示该小数的小数点后的十进制数字的个数。</li>
+</ul>
+<h2 id="2-4-定点数类型"><a href="#2-4-定点数类型" class="headerlink" title="2.4 定点数类型"></a>2.4 定点数类型</h2><p>类型<code>DECIMAL(M, D)</code>,占用的存储空间取决于<code>M</code>和<code>D</code>，取值范围也取决于<code>M</code>和<code>D</code>。</p>
+<h2 id="2-5-日期和时间类型"><a href="#2-5-日期和时间类型" class="headerlink" title="2.5 日期和时间类型"></a>2.5 日期和时间类型</h2><table>
+<thead>
+<tr>
+<th><strong>类型</strong></th>
+<th>存储空间要求</th>
+<th>取值范围</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>YEAR</code></td>
+<td>1字节</td>
+<td>$1901\sim 2155$</td>
+<td>年份值</td>
+</tr>
+<tr>
+<td><code>DATE</code></td>
+<td>3字节</td>
+<td>$’1000-01-01’\sim ‘9999-12-31’$</td>
+<td>日期值</td>
+</tr>
+<tr>
+<td><code>TIME</code></td>
+<td>3字节+小数秒的存储空间</td>
+<td>$’-838:59:59[.000000]’ \sim ‘838:59:59[.000000]’$</td>
+<td>时间值</td>
+</tr>
+<tr>
+<td><code>DATETIME</code></td>
+<td>5字节+小数秒的存储空间</td>
+<td>$’1000-01-01 00:00:00[.000000]’ ～ ‘9999-12-31 23:59:59[.999999]’$</td>
+<td>日期加时间值</td>
+</tr>
+<tr>
+<td><code>TIMESTAMP</code></td>
+<td>4字节+小数秒的存储空间</td>
+<td>$’1970-01-01 00:00:01[.000000]’ ～ ‘2038-01-19 03:14:07[.999999]’$</td>
+<td>时间戳</td>
+</tr>
+</tbody></table>
+<p>小数秒的存储空间：</p>
+<table>
+<thead>
+<tr>
+<th><strong>保留的小数秒位数</strong></th>
+<th><strong>额外需要的存储空间</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0字节</td>
+</tr>
+<tr>
+<td>1&#x2F;2</td>
+<td>1字节</td>
+</tr>
+<tr>
+<td>3&#x2F;4</td>
+<td>2字节</td>
+</tr>
+<tr>
+<td>5&#x2F;6</td>
+<td>3字节</td>
+</tr>
+</tbody></table>
+<h2 id="2-5-MySQL的字符串类型"><a href="#2-5-MySQL的字符串类型" class="headerlink" title="2.5 MySQL的字符串类型"></a>2.5 MySQL的字符串类型</h2><table>
+<thead>
+<tr>
+<th><strong>类型</strong></th>
+<th><strong>最大长度</strong></th>
+<th><strong>存储空间要求</strong></th>
+<th><strong>备注</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>CHAR(M)</code></td>
+<td><code>M</code>个字符</td>
+<td><code>M*W</code>个字节</td>
+<td><code>M</code>取值范围<code>0 ~ 255</code>，默认为1<code>CHAR</code>和<code>CHAR(1)</code>同义，<code>CHAR(0)</code>只能存储<code>&#39;&#39;</code>或者<code>NULL</code>；<br /><code>CHAR</code>会对剩余的空间补空格字符补齐</td>
+</tr>
+<tr>
+<td><code>VARCHAR(M)</code></td>
+<td><code>M</code>个字符</td>
+<td><code>L+1</code>或<code>L+2</code>个字节</td>
+<td><code>M</code>理论取值范围<code>0 ~ 65535</code>，<br />但MySQL规定，表中某一行包含的所有列的数据大小总共不得超过65535字节，所以<code>VARCHAR(M)</code>字符数量是小于65535的</td>
+</tr>
+<tr>
+<td><code>TINYTEXT</code></td>
+<td>$2^8-1$个字节</td>
+<td><code>L+1</code>个字节</td>
+<td>不受65535限制</td>
+</tr>
+<tr>
+<td><code>TEXT</code></td>
+<td>$2^{16} - 1$字节</td>
+<td><code>L+2</code>个字节</td>
+<td>不受65535限制</td>
+</tr>
+<tr>
+<td><code>MEDIUMTEXT</code></td>
+<td>$2^{24} - 1$个字节</td>
+<td><code>L+3</code>个字节</td>
+<td>不受65535限制</td>
+</tr>
+<tr>
+<td><code>LONGTEXT</code></td>
+<td>$2^{32} - 1$个字节</td>
+<td><code>L+4</code>个字节</td>
+<td>不受65535限制</td>
+</tr>
+</tbody></table>
+<p>其中<code>M</code>代表该数据类型最多能存储的字符数量，<code>L</code>代表我们实际向该类型的属性中存储的字符串在特定字符集下所占的字节数，<code>W</code>代表在该特定字符集下，编码一个字符最多需要的字节数（ascii取1，gbk取2，utf8取3等）。</p>
+<h2 id="2-6-ENUM类型和SET类型"><a href="#2-6-ENUM类型和SET类型" class="headerlink" title="2.6 ENUM类型和SET类型"></a>2.6 ENUM类型和SET类型</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">ENUM(<span class="hljs-string">&#x27;str1&#x27;</span>, <span class="hljs-string">&#x27;str2&#x27;</span>, <span class="hljs-string">&#x27;str3&#x27;</span>)<br><span class="hljs-keyword">SET</span>(<span class="hljs-string">&#x27;str1&#x27;</span>, <span class="hljs-string">&#x27;str2&#x27;</span>, <span class="hljs-string">&#x27;str3&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-7-二进制类型"><a href="#2-7-二进制类型" class="headerlink" title="2.7 二进制类型"></a>2.7 二进制类型</h2><ul>
+<li><code>BIT(M)</code></li>
+<li><code>BINARY(M)</code>&#x2F;<code>VARBINARY(M)</code></li>
+<li><code>TINYBLOB</code></li>
+<li><code>BLOB</code></li>
+<li><code>MEDIUMBLOB</code></li>
+<li><code>LONGBLOB</code></li>
+</ul>
+<h1 id="三、存储函数"><a href="#三、存储函数" class="headerlink" title="三、存储函数"></a>三、存储函数</h1><h2 id="3-1-创建存储函数"><a href="#3-1-创建存储函数" class="headerlink" title="3.1 创建存储函数"></a>3.1 创建存储函数</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> 存储函数名称([参数列表])<br><span class="hljs-keyword">RETURNS</span> 返回值类型<br><span class="hljs-keyword">BEGIN</span><br>    函数体内容<br><span class="hljs-keyword">END</span><br></code></pre></td></tr></table></figure>
+
+<p>例如（要先用<code>delimiter</code>修改语句结束分割符号）：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql">mysql<span class="hljs-operator">&gt;</span> delimiter $<br>mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> avg_score(s <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>))<br>    <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">RETURNS</span> <span class="hljs-keyword">DOUBLE</span><br>    <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span>     <span class="hljs-keyword">RETURN</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(score) <span class="hljs-keyword">FROM</span> student_score <span class="hljs-keyword">WHERE</span> subject <span class="hljs-operator">=</span> s);<br>    <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">END</span> $<br>Query OK, <span class="hljs-number">0</span> <span class="hljs-keyword">rows</span> affected (<span class="hljs-number">0.00</span> sec)<br><br>mysql<span class="hljs-operator">&gt;</span> delimiter ;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-2-查看和删除存储函数"><a href="#3-2-查看和删除存储函数" class="headerlink" title="3.2 查看和删除存储函数"></a>3.2 查看和删除存储函数</h2><p>查看存储函数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">FUNCTION</span> STATUS [<span class="hljs-keyword">LIKE</span> 需要匹配的函数名]<br></code></pre></td></tr></table></figure>
+
+<p>查看函数定义：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> 函数名<br></code></pre></td></tr></table></figure>
+
+<p>自定义变量：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SET</span> <span class="hljs-variable">@value</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-3-判断语句的编写"><a href="#3-3-判断语句的编写" class="headerlink" title="3.3 判断语句的编写"></a>3.3 判断语句的编写</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql">IF 表达式 <span class="hljs-keyword">THEN</span><br>    处理语句列表<br>[ELSEIF 表达式 <span class="hljs-keyword">THEN</span><br>    处理语句列表]<br>... # 这里可以有多个ELSEIF语句<br>[<span class="hljs-keyword">ELSE</span><br>    处理语句列表]<br><span class="hljs-keyword">END</span> IF;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-4-循环语句的编写"><a href="#3-4-循环语句的编写" class="headerlink" title="3.4 循环语句的编写"></a>3.4 循环语句的编写</h2><h3 id="WHILE循环语句"><a href="#WHILE循环语句" class="headerlink" title="WHILE循环语句"></a><code>WHILE</code>循环语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">WHILE 表达式 DO<br>    处理语句列表<br><span class="hljs-keyword">END</span> WHILE;<br></code></pre></td></tr></table></figure>
+
+<h3 id="REPEAT循环语句"><a href="#REPEAT循环语句" class="headerlink" title="REPEAT循环语句"></a><code>REPEAT</code>循环语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">REPEAT<br>    处理语句列表<br>UNTIL 表达式 <span class="hljs-keyword">END</span> REPEAT;<br></code></pre></td></tr></table></figure>
+
+<h3 id="LOOP循环语句"><a href="#LOOP循环语句" class="headerlink" title="LOOP循环语句"></a><code>LOOP</code>循环语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">LOOP<br>    处理语句列表<br><span class="hljs-keyword">END</span> LOOP;<br></code></pre></td></tr></table></figure>
+
+<h1 id="四、存储过程"><a href="#四、存储过程" class="headerlink" title="四、存储过程"></a>四、存储过程</h1><h2 id="4-1-创建存储过程"><a href="#4-1-创建存储过程" class="headerlink" title="4.1 创建存储过程"></a>4.1 创建存储过程</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> 存储过程名称([参数列表])<br><span class="hljs-keyword">BEGIN</span><br>    需要执行的语句<br><span class="hljs-keyword">END</span><br></code></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs sql">mysql<span class="hljs-operator">&gt;</span> delimiter $<br>mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> t1_operation(<br>    <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span>     m1_value <span class="hljs-type">INT</span>,<br>    <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span>     n1_value <span class="hljs-type">CHAR</span>(<span class="hljs-number">1</span>)<br>    <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span> )<br>    <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span>     <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1;<br>    <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span>     <span class="hljs-keyword">INSERT INTO</span> t1(m1, n1) <span class="hljs-keyword">VALUES</span>(m1_value, n1_value);<br>    <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span>     <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1;<br>    <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">END</span> $<br>Query OK, <span class="hljs-number">0</span> <span class="hljs-keyword">rows</span> affected (<span class="hljs-number">0.00</span> sec)<br><br>mysql<span class="hljs-operator">&gt;</span> delimiter ;<br>mysql<span class="hljs-operator">&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="4-2-存储过程的调用"><a href="#4-2-存储过程的调用" class="headerlink" title="4.2 存储过程的调用"></a>4.2 存储过程的调用</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CALL</span> 存储过程([参数列表]);<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-3-查看和删除存储过程"><a href="#4-3-查看和删除存储过程" class="headerlink" title="4.3 查看和删除存储过程"></a>4.3 查看和删除存储过程</h2><p>查看当前数据库中创建的<code>存储过程</code>都有哪些的语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">PROCEDURE</span> STATUS [<span class="hljs-keyword">LIKE</span> 需要匹配的存储过程名称]<br></code></pre></td></tr></table></figure>
+
+<p>查看某个<code>存储过程</code>具体是怎么定义的语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> 存储过程名称<br></code></pre></td></tr></table></figure>
+
+<p>删除<code>存储过程</code>的语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">PROCEDURE</span> 存储过程名称<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-4-存储过程参数前缀"><a href="#4-4-存储过程参数前缀" class="headerlink" title="4.4 存储过程参数前缀"></a>4.4 存储过程参数前缀</h2><p>前缀<code>IN</code>，<code>OUT</code>，<code>INOUT</code></p>
+<h1 id="五、游标的使用"><a href="#五、游标的使用" class="headerlink" title="五、游标的使用"></a>五、游标的使用</h1><h2 id="5-1-创建游标"><a href="#5-1-创建游标" class="headerlink" title="5.1 创建游标"></a>5.1 创建游标</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DECLARE</span> 游标名称 <span class="hljs-keyword">CURSOR</span> <span class="hljs-keyword">FOR</span> 查询语句;<br></code></pre></td></tr></table></figure>
+
+<h2 id="5-2-打开和关闭游标"><a href="#5-2-打开和关闭游标" class="headerlink" title="5.2 打开和关闭游标"></a>5.2 打开和关闭游标</h2><p>在创建完游标之后，我们需要手动打开和关闭游标，语法也简单：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">OPEN</span> 游标名称;<br><br><span class="hljs-keyword">CLOSE</span> 游标名称;<br></code></pre></td></tr></table></figure>
+
+<h2 id="5-3-使用游标获取记录"><a href="#5-3-使用游标获取记录" class="headerlink" title="5.3 使用游标获取记录"></a>5.3 使用游标获取记录</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">FETCH</span> 游标名 <span class="hljs-keyword">INTO</span> 变量<span class="hljs-number">1</span>, 变量<span class="hljs-number">2</span>, ... 变量n<br></code></pre></td></tr></table></figure>
+
+<p>每调用一次 FETCH 语句，游标就移动到下一条记录的位置。</p>
+<h1 id="六、触发器和事件"><a href="#六、触发器和事件" class="headerlink" title="六、触发器和事件"></a>六、触发器和事件</h1><h2 id="6-1-触发器"><a href="#6-1-触发器" class="headerlink" title="6.1 触发器"></a>6.1 触发器</h2><p>我们使用<code>MySQL</code>的过程中可能会有下边这些需求：</p>
+<ul>
+<li>在向<code>t1</code>表插入或更新数据之前对自动对数据进行校验，要求<code>m1</code>列的值必须在<code>1~10</code>之间，校验规则如下：<ul>
+<li>如果插入的记录的<code>m1</code>列的值小于<code>1</code>，则按<code>1</code>插入。</li>
+<li>如果<code>m1</code>列的值大于<code>10</code>，则按<code>10</code>插入。</li>
+</ul>
+</li>
+<li>在向<code>t1</code>表中插入记录之后自动把这条记录插入到<code>t2</code>表。</li>
+</ul>
+<p>也就是我们在对表中的记录做增、删、改操作前和后都可能需要让<code>MySQL</code>服务器自动执行一些额外的语句，这个就是所谓的<code>触发器</code>的应用场景。</p>
+<h3 id="6-1-1-创建触发器"><a href="#6-1-1-创建触发器" class="headerlink" title="6.1.1 创建触发器"></a>6.1.1 创建触发器</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> 触发器名<br>&#123;BEFORE<span class="hljs-operator">|</span>AFTER&#125;<br>&#123;<span class="hljs-keyword">INSERT</span><span class="hljs-operator">|</span><span class="hljs-keyword">DELETE</span><span class="hljs-operator">|</span><span class="hljs-keyword">UPDATE</span>&#125;<br><span class="hljs-keyword">ON</span> 表名<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">BEGIN</span><br>    触发器内容<br><span class="hljs-keyword">END</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="6-1-2-查看和删除触发器"><a href="#6-1-2-查看和删除触发器" class="headerlink" title="6.1.2 查看和删除触发器"></a>6.1.2 查看和删除触发器</h3><p>查看当前数据库中定义的所有触发器的语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> TRIGGERS;<br></code></pre></td></tr></table></figure>
+
+<p>查看某个具体的触发器的定义：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> 触发器名;<br></code></pre></td></tr></table></figure>
+
+<p>删除触发器：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TRIGGER</span> 触发器名;<br></code></pre></td></tr></table></figure>
+
+<h2 id="6-2-事件"><a href="#6-2-事件" class="headerlink" title="6.2 事件"></a>6.2 事件</h2><p>有时候我们想让<code>MySQL</code>服务器在某个时间点或者每隔一段时间自动地执行一些语句，这时候就需要去创建一个<code>事件</code>。</p>
+<h3 id="6-2-1-创建事件"><a href="#6-2-1-创建事件" class="headerlink" title="6.2.1 创建事件"></a>6.2.1 创建事件</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> EVENT 事件名<br><span class="hljs-keyword">ON</span> SCHEDULE<br>&#123;<br>    <span class="hljs-keyword">AT</span> 某个确定的时间点<span class="hljs-operator">|</span> <br>    <span class="hljs-keyword">EVERY</span> 期望的时间间隔 [STARTS datetime][<span class="hljs-keyword">END</span> datetime]<br>&#125;<br>DO<br><span class="hljs-keyword">BEGIN</span><br>    具体的语句<br><span class="hljs-keyword">END</span><br></code></pre></td></tr></table></figure>
+
+<p>事件支持两种类型的自动执行方式：</p>
+<ol>
+<li><p>在某个确定的时间点执行：</p>
+<p>比如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> EVENT insert_t1_event<br><span class="hljs-keyword">ON</span> SCHEDULE<br><span class="hljs-keyword">AT</span> <span class="hljs-string">&#x27;2019-09-04 15:48:54&#x27;</span><br>DO<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">INSERT INTO</span> t1(m1, n1) <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">6</span>, <span class="hljs-string">&#x27;f&#x27;</span>);<br><span class="hljs-keyword">END</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>每隔一段时间执行一次</p>
+<p>比如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> EVENT insert_t1<br><span class="hljs-keyword">ON</span> SCHEDULE<br><span class="hljs-keyword">EVERY</span> <span class="hljs-number">1</span> <span class="hljs-keyword">HOUR</span><br>DO<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">INSERT INTO</span> t1(m1, n1) <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">6</span>, <span class="hljs-string">&#x27;f&#x27;</span>);<br><span class="hljs-keyword">END</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="6-2-2-查看和删除事件"><a href="#6-2-2-查看和删除事件" class="headerlink" title="6.2.2 查看和删除事件"></a>6.2.2 查看和删除事件</h3><p>查看当前数据库中定义的所有事件的语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> EVENTS;<br></code></pre></td></tr></table></figure>
+
+<p>查看某个具体的事件的定义：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">CREATE</span> EVENT 事件名;<br></code></pre></td></tr></table></figure>
+
+<p>删除事件：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> EVENT 事件名;<br></code></pre></td></tr></table></figure>
+
+<h3 id="6-2-3-事件使用注意事项"><a href="#6-2-3-事件使用注意事项" class="headerlink" title="6.2.3 事件使用注意事项"></a>6.2.3 事件使用注意事项</h3><p>默认情况下，<code>MySQL</code>服务器并不会帮助我们执行事件，除非我们使用下边的语句手动开启该功能：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql">mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">SET</span> <span class="hljs-keyword">GLOBAL</span> event_scheduler <span class="hljs-operator">=</span> <span class="hljs-keyword">ON</span>;<br>Query OK, <span class="hljs-number">0</span> <span class="hljs-keyword">rows</span> affected (<span class="hljs-number">0.00</span> sec)<br><br>mysql<span class="hljs-operator">&gt;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>小贴士： event_scheduler其实是一个系统变量，它的值也可以在MySQL服务器启动的时候通过启动参数或者通过配置文件来设置event_scheduler的值。这些所谓的系统变量、启动参数、配置文件的各种东东并不是我们小白现在需要掌握的，大家忽略它们就好了～</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/mysql/" class="print-no-link">#mysql</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>系统的捡一下Mysql</div>
+      <div>https://wttch96.github.io/post/mysql/系统的捡一下Mysql.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Wttch</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/post/java/jvm/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89.html" title="深入理解java虚拟机（一）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">深入理解java虚拟机（一）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/post/%E6%9E%B6%E6%9E%84/%E8%BD%AF%E4%BB%B6%E5%85%AC%E5%8F%B8%E5%8F%AF%E9%87%8D%E7%94%A8%E5%BA%93%E7%9A%84%E5%BB%BA%E8%AE%BE.html" title="软件公司可重用库的建设">
+                        <span class="hidden-mobile">软件公司可重用库的建设</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP备18055496号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京ICP备18055496号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
