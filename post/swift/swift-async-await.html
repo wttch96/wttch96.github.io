@@ -1,0 +1,923 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Wttch">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="引言在 Swift 5.5 中，Apple 引入了全新的并发模型，其中 async&#x2F;await 无疑是最重要的特性之一。它彻底改变了我们编写异步代码的方式，让原本复杂的闭包嵌套（俗称”回调地狱”）变得像同步代码一样直观易读。 本文将深入浅出地讲解 async&#x2F;await 的工作原理，并配合一个简单的网络请求 Demo，让你快速上手。  一、传统异步编程之痛在 async&#x2F;await 问世之前，我们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift 并发编程：深入理解 async&#x2F;await 原理与实战">
+<meta property="og:url" content="https://wttch96.github.io/post/swift/swift-async-await.html">
+<meta property="og:site_name" content="Wttch&#39;s Blog">
+<meta property="og:description" content="引言在 Swift 5.5 中，Apple 引入了全新的并发模型，其中 async&#x2F;await 无疑是最重要的特性之一。它彻底改变了我们编写异步代码的方式，让原本复杂的闭包嵌套（俗称”回调地狱”）变得像同步代码一样直观易读。 本文将深入浅出地讲解 async&#x2F;await 的工作原理，并配合一个简单的网络请求 Demo，让你快速上手。  一、传统异步编程之痛在 async&#x2F;await 问世之前，我们">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-21T16:01:30.000Z">
+<meta property="article:modified_time" content="2026-07-21T08:04:19.471Z">
+<meta property="article:author" content="Wttch">
+<meta property="article:tag" content="swift">
+<meta property="article:tag" content="并发">
+<meta property="article:tag" content="异步">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Swift 并发编程：深入理解 async/await 原理与实战 - Wttch&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"wttch96.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Wttch&#39;s 学习笔记📚📚</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Swift 并发编程：深入理解 async/await 原理与实战"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-21 16:01" pubdate>
+          2026年7月21日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          33 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Swift 并发编程：深入理解 async/await 原理与实战</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在 Swift 5.5 中，Apple 引入了全新的并发模型，其中 <code>async/await</code> 无疑是最重要的特性之一。它彻底改变了我们编写异步代码的方式，让原本复杂的闭包嵌套（俗称”回调地狱”）变得像同步代码一样直观易读。</p>
+<p>本文将深入浅出地讲解 <code>async/await</code> 的工作原理，并配合一个简单的网络请求 Demo，让你快速上手。</p>
+<hr>
+<h1 id="一、传统异步编程之痛"><a href="#一、传统异步编程之痛" class="headerlink" title="一、传统异步编程之痛"></a>一、传统异步编程之痛</h1><p>在 <code>async/await</code> 问世之前，我们通常使用 <strong>逃逸闭包（@escaping Closure）</strong> 或 <strong>Combine 框架</strong> 来处理异步任务。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">// 传统的闭包回调方式</span><br><span class="hljs-keyword">func</span> <span class="hljs-title function_">fetchData</span>(<span class="hljs-params">completion</span>: <span class="hljs-keyword">@escaping</span> (<span class="hljs-type">String</span>) -&gt; <span class="hljs-type">Void</span>) &#123;<br>    <span class="hljs-type">DispatchQueue</span>.global().async &#123;<br>        sleep(<span class="hljs-number">2</span>) <span class="hljs-comment">// 模拟网络请求</span><br>        <span class="hljs-keyword">let</span> result <span class="hljs-operator">=</span> <span class="hljs-string">&quot;传统方式返回的数据&quot;</span><br>        <span class="hljs-type">DispatchQueue</span>.main.async &#123;<br>            completion(result)<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 调用时会产生嵌套</span><br>fetchData &#123; data <span class="hljs-keyword">in</span><br>    <span class="hljs-built_in">print</span>(data)<br>    <span class="hljs-comment">// 如果下一个请求依赖这个结果，嵌套会越来越深</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这种方式的缺点显而易见：</p>
+<ul>
+<li><strong>嵌套层次深</strong>：多个连续的异步操作会导致金字塔状的代码。</li>
+<li><strong>错误处理复杂</strong>：需要在每个闭包中处理 <code>Error</code>。</li>
+<li><strong>逻辑割裂</strong>：代码的执行顺序不直观。</li>
+</ul>
+<hr>
+<h1 id="二、async-x2F-await-的核心原理"><a href="#二、async-x2F-await-的核心原理" class="headerlink" title="二、async&#x2F;await 的核心原理"></a>二、async&#x2F;await 的核心原理</h1><p><code>async/await</code> 是建立在 <strong>协程（Coroutine）</strong> 概念之上的编译器级特性。它并不是多线程的简单封装，而是一种<strong>挂起与恢复</strong>的机制。</p>
+<h2 id="1-状态机（State-Machine）转换"><a href="#1-状态机（State-Machine）转换" class="headerlink" title="1. 状态机（State Machine）转换"></a>1. 状态机（State Machine）转换</h2><p>当你在函数前面加上 <code>async</code> 关键字，编译器会将该函数编译成一个<strong>状态机</strong>。每个 <code>await</code> 调用都是一个挂起点（Suspension Point）。</p>
+<ul>
+<li><strong>挂起（Suspend）</strong>：当遇到 <code>await</code> 时，当前线程不会被阻塞，而是将函数的执行状态（局部变量、执行位置）保存起来，并将控制权交还给系统。</li>
+<li><strong>恢复（Resume）</strong>：当异步操作完成（无论是成功还是失败），系统会找到合适的线程，恢复之前保存的状态，并继续往下执行。</li>
+</ul>
+<h2 id="2-结构化并发（Structured-Concurrency）"><a href="#2-结构化并发（Structured-Concurrency）" class="headerlink" title="2. 结构化并发（Structured Concurrency）"></a>2. 结构化并发（Structured Concurrency）</h2><p>Swift 强制要求 <code>async</code> 任务必须在一个 <strong>Task</strong> 中运行。<code>Task</code> 提供了执行上下文，并支持取消操作。这种结构保证了任务的<strong>生命周期</strong>与父任务绑定，防止资源泄漏。</p>
+<h2 id="3-线程调度"><a href="#3-线程调度" class="headerlink" title="3. 线程调度"></a>3. 线程调度</h2><p><code>async/await</code> 本身不绑定特定线程。在挂起期间，线程可以去做其他工作；恢复时，任务可能会被调度到<strong>任意一个可用线程</strong>上（除非使用 <code>@MainActor</code> 强制指定主线程）。</p>
+<hr>
+<h1 id="三、实战-Demo：简易网络请求"><a href="#三、实战-Demo：简易网络请求" class="headerlink" title="三、实战 Demo：简易网络请求"></a>三、实战 Demo：简易网络请求</h1><p>我们用一个真实的场景：请求一个公开的 API（如 <code>https://api.github.com/users/apple</code>），获取用户信息并打印。</p>
+<h2 id="步骤-1：定义数据模型"><a href="#步骤-1：定义数据模型" class="headerlink" title="步骤 1：定义数据模型"></a>步骤 1：定义数据模型</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">import</span> Foundation<br><br><span class="hljs-comment">// 遵循 Decodable 协议，用于自动解析 JSON</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">GitHubUser</span>: <span class="hljs-title class_ inherited__">Decodable</span> &#123;<br>    <span class="hljs-keyword">let</span> login: <span class="hljs-type">String</span><br>    <span class="hljs-keyword">let</span> name: <span class="hljs-type">String</span>?<br>    <span class="hljs-keyword">let</span> location: <span class="hljs-type">String</span>?<br>    <span class="hljs-keyword">let</span> publicRepos: <span class="hljs-type">Int</span><br>    <br>    <span class="hljs-comment">// 如果 JSON 键名与属性名不一致，使用 CodingKeys</span><br>    <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_ inherited__">String</span>, <span class="hljs-title class_ inherited__">CodingKey</span> &#123;<br>        <span class="hljs-keyword">case</span> login<br>        <span class="hljs-keyword">case</span> name<br>        <span class="hljs-keyword">case</span> location<br>        <span class="hljs-keyword">case</span> publicRepos <span class="hljs-operator">=</span> <span class="hljs-string">&quot;public_repos&quot;</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="步骤-2：封装异步请求函数"><a href="#步骤-2：封装异步请求函数" class="headerlink" title="步骤 2：封装异步请求函数"></a>步骤 2：封装异步请求函数</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">// 定义一个枚举用于错误处理</span><br><span class="hljs-keyword">enum</span> <span class="hljs-title class_">NetworkError</span>: <span class="hljs-title class_ inherited__">Error</span> &#123;<br>    <span class="hljs-keyword">case</span> invalidURL<br>    <span class="hljs-keyword">case</span> requestFailed(<span class="hljs-type">Error</span>)<br>    <span class="hljs-keyword">case</span> invalidResponse<br>    <span class="hljs-keyword">case</span> decodingFailed(<span class="hljs-type">Error</span>)<br>&#125;<br><br><span class="hljs-comment">// 核心异步函数</span><br><span class="hljs-keyword">func</span> <span class="hljs-title function_">fetchUserInfo</span>(<span class="hljs-params">username</span>: <span class="hljs-type">String</span>) <span class="hljs-keyword">async</span> <span class="hljs-keyword">throws</span> -&gt; <span class="hljs-type">GitHubUser</span> &#123;<br>    <span class="hljs-comment">// 1. 构造 URL</span><br>    <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> url <span class="hljs-operator">=</span> <span class="hljs-type">URL</span>(string: <span class="hljs-string">&quot;https://api.github.com/users/<span class="hljs-subst">\(username)</span>&quot;</span>) <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-type">NetworkError</span>.invalidURL<br>    &#125;<br>    <br>    <span class="hljs-comment">// 2. 发起网络请求（挂起点1）</span><br>    <span class="hljs-keyword">let</span> (data, response) <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-keyword">await</span> <span class="hljs-type">URLSession</span>.shared.data(from: url)<br>    <br>    <span class="hljs-comment">// 3. 检查 HTTP 响应状态</span><br>    <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> httpResponse <span class="hljs-operator">=</span> response <span class="hljs-keyword">as?</span> <span class="hljs-type">HTTPURLResponse</span>,<br>          httpResponse.statusCode <span class="hljs-operator">==</span> <span class="hljs-number">200</span> <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-type">NetworkError</span>.invalidResponse<br>    &#125;<br>    <br>    <span class="hljs-comment">// 4. 解析 JSON</span><br>    <span class="hljs-keyword">let</span> decoder <span class="hljs-operator">=</span> <span class="hljs-type">JSONDecoder</span>()<br>    <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> user <span class="hljs-operator">=</span> <span class="hljs-keyword">try?</span> decoder.decode(<span class="hljs-type">GitHubUser</span>.<span class="hljs-keyword">self</span>, from: data) <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-type">NetworkError</span>.decodingFailed(<span class="hljs-type">NSError</span>(domain: <span class="hljs-string">&quot;Decode&quot;</span>, code: <span class="hljs-number">0</span>))<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> user<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意</strong>：<code>URLSession.shared.data(from:)</code> 是 Apple 提供的原生 <code>async</code> 方法。</p>
+</blockquote>
+<h2 id="步骤-3：主流程调用与打印"><a href="#步骤-3：主流程调用与打印" class="headerlink" title="步骤 3：主流程调用与打印"></a>步骤 3：主流程调用与打印</h2><p>由于 Swift 顶层不能直接调用 <code>async</code> 函数，我们需要在 <code>Task</code> 块中执行。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-type">Task</span> &#123;<br>    <span class="hljs-keyword">do</span> &#123;<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;开始请求 GitHub 数据...&quot;</span>)<br>        <span class="hljs-comment">// 调用异步函数（挂起点）</span><br>        <span class="hljs-keyword">let</span> user <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-keyword">await</span> fetchUserInfo(username: <span class="hljs-string">&quot;apple&quot;</span>)<br>        <br>        <span class="hljs-comment">// 打印结果</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        ==========================</span><br><span class="hljs-string">        用户名: <span class="hljs-subst">\(user.login)</span></span><br><span class="hljs-string">        姓名: <span class="hljs-subst">\(user.name <span class="hljs-operator">??</span> <span class="hljs-string">&quot;无&quot;</span>)</span></span><br><span class="hljs-string">        位置: <span class="hljs-subst">\(user.location <span class="hljs-operator">??</span> <span class="hljs-string">&quot;无&quot;</span>)</span></span><br><span class="hljs-string">        公开仓库数: <span class="hljs-subst">\(user.publicRepos)</span></span><br><span class="hljs-string">        ==========================</span><br><span class="hljs-string">        &quot;&quot;&quot;</span>)<br>    &#125; <span class="hljs-keyword">catch</span> &#123;<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;请求失败：<span class="hljs-subst">\(error.localizedDescription)</span>&quot;</span>)<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 如果在 Playground 中运行，需要开启无限执行</span><br><span class="hljs-comment">// PlaygroundPage.current.needsIndefiniteExecution = true</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="四、运行结果与代码分析"><a href="#四、运行结果与代码分析" class="headerlink" title="四、运行结果与代码分析"></a>四、运行结果与代码分析</h1><p>当你运行上述代码时，控制台会立即打印 <code>开始请求...</code>，然后等待约 1-2 秒（取决于网络），最后输出用户信息。</p>
+<h3 id="关键点解析："><a href="#关键点解析：" class="headerlink" title="关键点解析："></a>关键点解析：</h3><ol>
+<li>**<code>try await</code>**：<code>try</code> 表示该方法可能抛出错误，<code>await</code> 表示此处可能挂起。</li>
+<li><strong>非阻塞</strong>：在 <code>await</code> 期间，线程并没有被占用，它可以去处理其他任务（例如 UI 渲染）。</li>
+<li><strong>错误传播</strong>：<code>throws</code> 关键字让错误可以像同步代码一样向上冒泡，无需在闭包中层层传递。</li>
+</ol>
+<hr>
+<h1 id="五、进阶：关于-Task-与-MainActor"><a href="#五、进阶：关于-Task-与-MainActor" class="headerlink" title="五、进阶：关于 Task 与 MainActor"></a>五、进阶：关于 Task 与 MainActor</h1><h3 id="1-什么是-Task？"><a href="#1-什么是-Task？" class="headerlink" title="1. 什么是 Task？"></a>1. 什么是 Task？</h3><p><code>Task</code> 是一个异步操作的<strong>执行单元</strong>。它从当前上下文继承优先级和取消状态。</p>
+<ul>
+<li><strong>Task.detached</strong>：创建一个独立的任务，不继承父任务的上下文（较少使用）。</li>
+<li>默认的 <code>Task &#123;&#125;</code> 会继承当前 Actor 的上下文。</li>
+</ul>
+<h3 id="2-回到主线程更新-UI"><a href="#2-回到主线程更新-UI" class="headerlink" title="2. 回到主线程更新 UI"></a>2. 回到主线程更新 UI</h3><p>如果我们在一个后台任务中获取数据，需要更新 UI，必须回到主线程。Swift 提供了 <code>@MainActor</code> 来标记：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">// 方式一：使用 MainActor.run</span><br><span class="hljs-type">Task</span> &#123;<br>    <span class="hljs-keyword">let</span> user <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-keyword">await</span> fetchUserInfo(username: <span class="hljs-string">&quot;apple&quot;</span>)<br>    <span class="hljs-keyword">await</span> <span class="hljs-type">MainActor</span>.run &#123;<br>        <span class="hljs-comment">// 更新 UI 代码</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;UI 更新：<span class="hljs-subst">\(user.name <span class="hljs-operator">??</span> <span class="hljs-string">&quot;&quot;</span>)</span>&quot;</span>)<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 方式二：将函数声明在主 Actor 上</span><br><span class="hljs-meta">@MainActor</span><br><span class="hljs-keyword">func</span> <span class="hljs-title function_">updateUI</span>(<span class="hljs-params">with</span> <span class="hljs-params">user</span>: <span class="hljs-type">GitHubUser</span>) &#123;<br>    <span class="hljs-comment">// 这里是主线程</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h1><table>
+<thead>
+<tr>
+<th align="left">特性</th>
+<th align="left">闭包回调</th>
+<th align="left">async&#x2F;await</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">代码可读性</td>
+<td align="left">差（金字塔）</td>
+<td align="left">优秀（线性）</td>
+</tr>
+<tr>
+<td align="left">错误处理</td>
+<td align="left">复杂，需传递</td>
+<td align="left">简单，原生 try&#x2F;catch</td>
+</tr>
+<tr>
+<td align="left">线程管理</td>
+<td align="left">手动切换</td>
+<td align="left">自动挂起&#x2F;恢复，调度优化</td>
+</tr>
+<tr>
+<td align="left">调试体验</td>
+<td align="left">难（断点难定位）</td>
+<td align="left">好（类似同步函数）</td>
+</tr>
+</tbody></table>
+<p><strong>async&#x2F;await 的本质是编译器将异步代码转换为一个高效的状态机</strong>，它极大地提升了 Swift 开发者的生产力。掌握它，是迈向现代 Swift 开发的关键一步。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/swift/" class="category-chain-item">swift</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/swift/" class="print-no-link">#swift</a>
+      
+        <a href="/tags/%E5%B9%B6%E5%8F%91/" class="print-no-link">#并发</a>
+      
+        <a href="/tags/%E5%BC%82%E6%AD%A5/" class="print-no-link">#异步</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Swift 并发编程：深入理解 async/await 原理与实战</div>
+      <div>https://wttch96.github.io/post/swift/swift-async-await.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Wttch</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/post/swift/swift%E5%AD%97%E9%9D%A2%E9%87%8F.html" title="swift字面量">
+                        <span class="hidden-mobile">swift字面量</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP备18055496号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京ICP备18055496号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
