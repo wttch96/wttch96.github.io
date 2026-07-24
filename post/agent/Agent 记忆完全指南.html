@@ -19,23 +19,23 @@
   <meta name="author" content="Wttch">
   <meta name="keywords" content="">
   
-    <meta name="description" content="@Environment简介使用@EnvironmentObject可以监听到自定义的model；但是如果是系统的一些内置的类呢，则可以使用@Environment监听； 示例1@Environment(\.editMode) var editMode  @Binding简介双向绑定，用于父子视图的双向传递。修改子视图的Binding值，会触发父视图的State改变重新渲染body。修改父视图的S">
+    <meta name="description" content="在构建智能体（Agent）时，记忆系统是其大脑的核心组件。没有记忆，Agent 只会是金鱼，转头就忘。记忆不仅决定了对话的连贯性，更影响了 Agent 的个性化、学习能力和任务执行效率。本文将深入剖析 Agent 的 8 种主流记忆方式，并配以 Mermaid 示意图，助你彻底掌握记忆架构。  分类总览在深入细节前，先宏观分类。Agent 记忆通常分为三大类： mindmap   root((A">
 <meta property="og:type" content="article">
-<meta property="og:title" content="swift常见的属性修饰器">
-<meta property="og:url" content="https://wttch96.github.io/post/swift/swift%E5%B8%B8%E8%A7%81%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BF%AE%E9%A5%B0%E5%99%A8.html">
+<meta property="og:title" content="Agent 记忆完全指南：8种核心记忆方式深度解析">
+<meta property="og:url" content="https://wttch96.github.io/post/agent/Agent%20%E8%AE%B0%E5%BF%86%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97.html">
 <meta property="og:site_name" content="Wttch&#39;s Blog">
-<meta property="og:description" content="@Environment简介使用@EnvironmentObject可以监听到自定义的model；但是如果是系统的一些内置的类呢，则可以使用@Environment监听； 示例1@Environment(\.editMode) var editMode  @Binding简介双向绑定，用于父子视图的双向传递。修改子视图的Binding值，会触发父视图的State改变重新渲染body。修改父视图的S">
+<meta property="og:description" content="在构建智能体（Agent）时，记忆系统是其大脑的核心组件。没有记忆，Agent 只会是金鱼，转头就忘。记忆不仅决定了对话的连贯性，更影响了 Agent 的个性化、学习能力和任务执行效率。本文将深入剖析 Agent 的 8 种主流记忆方式，并配以 Mermaid 示意图，助你彻底掌握记忆架构。  分类总览在深入细节前，先宏观分类。Agent 记忆通常分为三大类： mindmap   root((A">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-07T11:25:50.000Z">
-<meta property="article:modified_time" content="2026-07-24T04:47:09.146Z">
+<meta property="article:published_time" content="2026-07-24T12:23:00.000Z">
+<meta property="article:modified_time" content="2026-07-24T04:47:09.136Z">
 <meta property="article:author" content="Wttch">
-<meta property="article:tag" content="swift">
-<meta property="article:tag" content="属性修饰器">
+<meta property="article:tag" content="agent">
+<meta property="article:tag" content="agent 记忆">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>swift常见的属性修饰器 - Wttch&#39;s Blog</title>
+  <title>Agent 记忆完全指南：8种核心记忆方式深度解析 - Wttch&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -304,7 +304,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="swift常见的属性修饰器"></span>
+            <span id="subtitle" data-typed-text="Agent 记忆完全指南：8种核心记忆方式深度解析"></span>
           
         </div>
 
@@ -315,8 +315,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-07 11:25" pubdate>
-          2022年4月7日 上午
+        <time datetime="2026-07-24 12:23" pubdate>
+          2026年7月24日 中午
         </time>
       </span>
     
@@ -327,7 +327,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          800 字
+          4.2k 字
         
       </span>
     
@@ -338,7 +338,7 @@
         
         
         
-          7 分钟
+          36 分钟
         
       </span>
     
@@ -377,23 +377,265 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">swift常见的属性修饰器</h1>
+            <h1 id="seo-header">Agent 记忆完全指南：8种核心记忆方式深度解析</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Environment"><a href="#Environment" class="headerlink" title="@Environment"></a>@Environment</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>使用<code>@EnvironmentObject</code>可以监听到自定义的model；<br>但是如果是系统的一些内置的类呢，则可以使用<code>@Environment</code>监听；</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-meta">@Environment</span>(\.editMode) <span class="hljs-keyword">var</span> editMode<br></code></pre></td></tr></table></figure>
+                <blockquote>
+<p>在构建智能体（Agent）时，记忆系统是其大脑的核心组件。没有记忆，Agent 只会是金鱼，转头就忘。记忆不仅决定了对话的连贯性，更影响了 Agent 的个性化、学习能力和任务执行效率。本文将深入剖析 Agent 的 8 种主流记忆方式，并配以 Mermaid 示意图，助你彻底掌握记忆架构。</p>
+</blockquote>
+<h1 id="分类总览"><a href="#分类总览" class="headerlink" title="分类总览"></a>分类总览</h1><p>在深入细节前，先宏观分类。Agent 记忆通常分为三大类：</p>
+<pre><code class=" mermaid">mindmap
+  root((Agent 记忆方式))
+    短期记忆
+      上下文窗口
+      对话缓冲
+    长期记忆
+      向量化语义记忆
+      关键事实档案
+      用户画像记忆
+    工作与混合记忆
+      反思与总结
+      工作记忆草稿本
+      混合检索记忆
+</code></pre>
 
-<h1 id="Binding"><a href="#Binding" class="headerlink" title="@Binding"></a>@Binding</h1><h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p>双向绑定，用于父子视图的双向传递。修改子视图的Binding值，会触发父视图的State改变重新渲染body。修改父视图的State的值同样也会重新通过Binding传递给子视图，触发重新渲染body。</p>
-<h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-meta">@Binding</span> <span class="hljs-keyword">var</span> value: <span class="hljs-type">Int</span><br></code></pre></td></tr></table></figure>
+<h1 id="1-上下文窗口（Context-Window）"><a href="#1-上下文窗口（Context-Window）" class="headerlink" title="1. 上下文窗口（Context Window）"></a>1. 上下文窗口（Context Window）</h1><p><strong>类型：短期记忆</strong></p>
+<p><strong>工作原理</strong><br>这是最基础的记忆形式。直接利用大模型的注意力机制，将最近的对话历史原封不动地拼接成一个巨大的 Prompt，提交给模型处理。它的记忆容量直接受限于模型支持的 Token 上限。</p>
+<pre><code class=" mermaid">graph LR
+    A[用户输入] --&gt; B[窗口管理器]
+    subgraph 上下文窗口
+        C[消息1]
+        D[消息2]
+        E[消息3]
+        F[消息N]
+    end
+    C --&gt; G[拼接为单一Prompt]
+    D --&gt; G
+    E --&gt; G
+    F --&gt; G
+    G --&gt; H[LLM推理]
+    H --&gt; I[生成回复]
+    
+    style C fill:#e1f5fe
+    style D fill:#e1f5fe
+    style E fill:#e1f5fe
+    style F fill:#ffcdd2
+</code></pre>
 
-<h1 id="State"><a href="#State" class="headerlink" title="@State"></a>@State</h1><h2 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h2><p>通过使用 @State 修饰器我们可以关联出 View 的状态. SwiftUI 将会把使用过 @State 修饰器的属性存储到一个特殊的内存区域，并且这个区域和 View struct 是隔离的. 当 @State 装饰过的属性发生了变化，SwiftUI 会根据新的属性值重新创建视图</p>
-<h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-meta">@State</span> <span class="hljs-keyword">var</span> value: <span class="hljs-type">Bool</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>优点</strong>：实现极简，无需外部存储；能完整保留窗口内的语序和细节。</li>
+<li><strong>缺点</strong>：成本高昂，Attention 计算量与 Token 数平方成正比；记忆“失忆”严重，超出窗口的信息永久丢失。</li>
+<li><strong>适用场景</strong>：简单的单轮问答，或对上下文依赖不深的轻量级 Bot。</li>
+</ul>
+<h1 id="2-对话缓冲（Conversation-Buffer）"><a href="#2-对话缓冲（Conversation-Buffer）" class="headerlink" title="2. 对话缓冲（Conversation Buffer）"></a>2. 对话缓冲（Conversation Buffer）</h1><p><strong>类型：短期记忆</strong></p>
+<p><strong>工作原理</strong><br>在系统内存中维护一个先进先出的消息列表。它不关心 Token 数，只关心消息条数。就像一个定长的排队队列，新人进，最老的出，然后将整个列表原样传给模型。</p>
+<pre><code class=" mermaid">graph TD
+    A[新消息] --&gt; B&#123;缓冲区是否已满?&#125;
+    B -- 否 --&gt; C[追加到列表末尾]
+    B -- 是 --&gt; D[删除列表第一条消息]
+    D --&gt; E[追加新消息到末尾]
+    C --&gt; F[返回完整列表给LLM]
+    E --&gt; F
+    
+    subgraph 内存缓冲区
+        direction LR
+        M1[消息1：最旧] 
+        M2[消息2]
+        M3[消息3]
+        M4[消息4：最新]
+    end
+    
+    F --&gt; M1
+    F --&gt; M2
+    F --&gt; M3
+    F --&gt; M4
+    
+    style M1 fill:#ffcdd2
+    style M4 fill:#c8e6c9
+</code></pre>
 
-<h1 id="Published-ObservedObject"><a href="#Published-ObservedObject" class="headerlink" title="@Published + @ObservedObject"></a>@Published + @ObservedObject</h1><h2 id="简介-3"><a href="#简介-3" class="headerlink" title="简介"></a>简介</h2><p>@Published是SwiftUI最有用的包装之一，允许我们创建出能够被自动观察的对象属性，SwiftUI会自动监视这个属性，一旦发生了改变，会自动修改与该属性绑定的界面。</p>
-<p>比如我们定义的数据结构Model，前提是 @Published 要在 ObservableObject 下使用<br>然后用 @ObservedObject 来引用这个对象，当然@State 不会报错，但是无法更新</p>
-<h2 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ModelData</span>: <span class="hljs-title class_ inherited__">ObservableObject</span>&#123;<br>  <span class="hljs-meta">@Published</span> <span class="hljs-keyword">var</span> name:<span class="hljs-type">String</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&quot;</span><br>&#125;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">ContentView</span>: <span class="hljs-title class_ inherited__">View</span>&#123;<br>  <span class="hljs-meta">@ObservedObject</span> <span class="hljs-keyword">var</span> model:<span class="hljs-type">ModelData</span> <span class="hljs-operator">=</span> <span class="hljs-type">ModelData</span>()<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>优点</strong>：实现比窗口管理更直观，完全保留了原始对话对象。</li>
+<li><strong>缺点</strong>：记忆颗粒度粗，可能某条关键信息极长导致直接撑爆，且旧信息无条件遗忘。</li>
+<li><strong>适用场景</strong>：需要快速搭建的对话原型，或对记忆精度要求不高的闲聊机器人。</li>
+</ul>
+<h1 id="3-向量化语义记忆（Vector-Semantic-Memory）"><a href="#3-向量化语义记忆（Vector-Semantic-Memory）" class="headerlink" title="3. 向量化语义记忆（Vector Semantic Memory）"></a>3. 向量化语义记忆（Vector Semantic Memory）</h1><p><strong>类型：长期记忆</strong></p>
+<p><strong>工作原理</strong><br>这是 Agent 具备“模糊记忆”的关键。它不记原话，只记“意思”。通过 Embedding 模型将文本片段转化为高维向量，存入向量数据库。检索时，用同样的模型编码用户查询，通过余弦相似度找到最“相关”的记忆片段。</p>
+<pre><code class=" mermaid">graph TD
+    subgraph 写入流程
+        W1[对话/文档] --&gt; W2[Embedding模型]
+        W2 --&gt; W3[向量: 0.23, -0.67, 0.91...]
+        W3 --&gt; W4[(向量数据库)]
+    end
+    
+    subgraph 检索流程
+        Q1[用户查询] --&gt; Q2[同一Embedding模型]
+        Q2 --&gt; Q3[查询向量]
+        Q3 --&gt; Q4[余弦相似度计算]
+        W4 --&gt; Q4
+        Q4 --&gt; Q5[返回Top-K相关片段]
+    end
+    
+    Q5 --&gt; R[拼接上下文] --&gt; LLM
+    
+    style W4 fill:#e8eaf6
+</code></pre>
+
+<ul>
+<li><strong>优点</strong>：跨语言、跨表述的记忆能力，极其灵活，能处理海量数据。</li>
+<li><strong>缺点</strong>：丢失了精确信息；黑盒检索，可解释性差；高度依赖模型质量。</li>
+<li><strong>适用场景</strong>：需要记忆海量文档、FAQ、或用户过往聊天大意的知识库型 Agent。</li>
+</ul>
+<h1 id="4-关键事实档案（Entity-x2F-KG-Memory）"><a href="#4-关键事实档案（Entity-x2F-KG-Memory）" class="headerlink" title="4. 关键事实档案（Entity&#x2F;KG Memory）"></a>4. 关键事实档案（Entity&#x2F;KG Memory）</h1><p><strong>类型：长期记忆</strong></p>
+<p><strong>工作原理</strong><br>与向量的“模糊”相反，它追求“精确”。通过信息抽取模型从对话中提取实体和关系，结构化为三元组存入知识图谱或键值数据库。查询时，直接从图中精确匹配。</p>
+<pre><code class=" mermaid">graph TD
+    A[对话: 我叫张三，住在北京] --&gt; B[信息抽取LLM]
+    B --&gt; C1[实体: 用户]
+    B --&gt; C2[实体: 张三]
+    B --&gt; C3[实体: 北京]
+    B --&gt; D1[关系: 姓名→张三]
+    B --&gt; D2[关系: 城市→北京]
+    
+    C1 --&gt; E[(知识图谱)]
+    C2 --&gt; E
+    C3 --&gt; E
+    D1 --&gt; E
+    D2 --&gt; E
+    
+    F[新提问: 我住在哪?] --&gt; G[查询图谱]
+    E --&gt; G
+    G --&gt; H[精确答案: 北京]
+    
+    style E fill:#fff3e0
+    style H fill:#c8e6c9
+</code></pre>
+
+<ul>
+<li><strong>优点</strong>：100% 精确，可解释，支持逻辑推理，结构化数据便于分析。</li>
+<li><strong>缺点</strong>：抽取过程可能出错，难以处理非结构化或情感信息，构建成本高。</li>
+<li><strong>适用场景</strong>：需要绝对精确信息的场景，如客户个人信息、订单号、医疗史、配置参数等。</li>
+</ul>
+<h1 id="5-用户画像记忆（Profile-Memory）"><a href="#5-用户画像记忆（Profile-Memory）" class="headerlink" title="5. 用户画像记忆（Profile Memory）"></a>5. 用户画像记忆（Profile Memory）</h1><p><strong>类型：长期记忆</strong></p>
+<p><strong>工作原理</strong><br>动态聚合器。它会持续分析用户的多轮对话，逐步提取并更新用户的长期属性、偏好、行为特征，压缩成一份“画像摘要”。每次新对话开始时，这份摘要会被静默注入 System Prompt，实现千人千面的交互。</p>
+<pre><code class=" mermaid">graph TD
+    A[第1次对话] --&gt; B1[提取: 程序员]
+    B1 --&gt; C[用户画像档案]
+    
+    D[第5次对话] --&gt; B2[提取: 喜欢Python]
+    B2 --&gt; C
+    
+    E[第10次对话] --&gt; B3[提取: 家在杭州]
+    B3 --&gt; C
+    
+    C --&gt; F&#123;画像更新合成&#125;
+    F --&gt; G[&quot;画像摘要: 程序员，Python，杭州，技术极客&quot;]
+    
+    G --&gt; H[注入System Prompt]
+    H --&gt; I[个性化回复生成]
+    
+    style C fill:#f3e5f5
+    style G fill:#e8eaf6
+</code></pre>
+
+<ul>
+<li><strong>优点</strong>：深度个性化，越聊越懂用户，无需用户重复设置。</li>
+<li><strong>缺点</strong>：依赖长周期的数据积累，更新策略复杂，需要处理画像漂移。</li>
+<li><strong>适用场景</strong>：个人助手、情感陪伴、个性化推荐系统等需要长期陪伴的 Agent。</li>
+</ul>
+<h1 id="6-反思与总结（Reflection-amp-Summary）"><a href="#6-反思与总结（Reflection-amp-Summary）" class="headerlink" title="6. 反思与总结（Reflection &amp; Summary）"></a>6. 反思与总结（Reflection &amp; Summary）</h1><p><strong>类型：工作&#x2F;混合记忆</strong></p>
+<p><strong>工作原理</strong><br>生成式压缩器。当对话历史太长时，不再简单丢弃，而是触发一个 LLM 调用，让它对历史对话进行阶梯式总结。用精炼的摘要代替冗长的原始记录，以最小的信息损失压缩 Token 用量。</p>
+<pre><code class=" mermaid">graph TD
+    A[对话历史累积] --&gt; B&#123;超过Token阈值?&#125;
+    B -- 否 --&gt; C[保持原样]
+    B -- 是 --&gt; D[触发反思机制]
+    
+    D --&gt; E[LLM反思生成]
+    E --&gt; F[&quot;摘要: 用户今天讨论了3个话题，情绪略焦虑...&quot;]
+    
+    F --&gt; G[丢弃原始对话]
+    G --&gt; H[仅保留摘要]
+    H --&gt; I[拼接新对话继续]
+    
+    style F fill:#c8e6c9
+    style G fill:#ffcdd2
+</code></pre>
+
+<ul>
+<li><strong>优点</strong>：极强的压缩能力，可无限延长对话；能提炼深层意图。</li>
+<li><strong>缺点</strong>：增加模型调用成本和延迟，总结过程也可能丢失关键细节。</li>
+<li><strong>适用场景</strong>：需要超长上下文处理的 Agent，如项目周期长达数月的协作工具。</li>
+</ul>
+<h1 id="7-工作记忆草稿本（Working-Memory-x2F-Scratchpad）"><a href="#7-工作记忆草稿本（Working-Memory-x2F-Scratchpad）" class="headerlink" title="7. 工作记忆草稿本（Working Memory &#x2F; Scratchpad）"></a>7. 工作记忆草稿本（Working Memory &#x2F; Scratchpad）</h1><p><strong>类型：工作记忆</strong></p>
+<p><strong>工作原理</strong><br>临时思考空间，相当于人的“草稿纸”。在执行复杂的多步推理任务时，Agent 会开辟一个临时存储区，记录每一步的中间结果、假设、计算过程和自我检查。任务完成后，这个草稿本立即被销毁。</p>
+<pre><code class=" mermaid">graph TD
+    A[任务: 规划北京三日游] --&gt; B[创建草稿本]
+    
+    subgraph 草稿本
+        S1[步骤1: 确定天数→3天]
+        S2[步骤2: 景点筛选]
+        S3[步骤3: 路线规划]
+        S4[步骤4: 交通安排]
+        S5[中间检查: 合理? ✅]
+    end
+    
+    B --&gt; S1
+    S1 --&gt; S2
+    S2 --&gt; S3
+    S3 --&gt; S4
+    S4 --&gt; S5
+    S5 --&gt; C[输出最终方案]
+    C --&gt; D[清空草稿本]
+    
+    style S5 fill:#fff9c4
+    style D fill:#ffcdd2
+</code></pre>
+
+<ul>
+<li><strong>优点</strong>：将复杂任务解耦，极大提升推理的准确性和条理性。</li>
+<li><strong>缺点</strong>：单次任务内的临时信息，不贡献长期知识；增加推理步数，速度变慢。</li>
+<li><strong>适用场景</strong>：数学题求解、复杂代码生成、多步工具调用、旅行规划等。</li>
+</ul>
+<h1 id="8-混合检索记忆（Hybrid-Memory）"><a href="#8-混合检索记忆（Hybrid-Memory）" class="headerlink" title="8. 混合检索记忆（Hybrid Memory）"></a>8. 混合检索记忆（Hybrid Memory）</h1><p><strong>类型：架构级混合</strong></p>
+<p><strong>工作原理</strong><br>企业级终极方案。单一的检索方式总有短板，混合检索同时启用多个通道：向量检索负责语义相似，关键词检索保证精确字面匹配，甚至引入知识图谱通道。各路召回结果通过加权融合排序器最终汇合。</p>
+<pre><code class=" mermaid">graph TD
+    A[用户查询] --&gt; B[向量检索通道]
+    A --&gt; C[关键词检索通道]
+    A --&gt; D[知识图谱通道]
+    
+    B --&gt; E[语义相似结果]
+    C --&gt; F[精确匹配结果]
+    D --&gt; G[结构化关联结果]
+    
+    E --&gt; H[融合排序器&lt;br/&gt;RRF/加权求和]
+    F --&gt; H
+    G --&gt; H
+    
+    H --&gt; I[去重+重排]
+    I --&gt; J[最终上下文块]
+    J --&gt; K[LLM推理]
+    
+    style H fill:#e1bee7
+    style J fill:#c8e6c9
+</code></pre>
+
+<ul>
+<li><strong>优点</strong>：兼顾语义模糊性和词汇精确性，鲁棒性极高，查全率与查准率俱佳。</li>
+<li><strong>缺点</strong>：架构复杂，维护成本高，多路召回增加延迟。</li>
+<li><strong>适用场景</strong>：对事实准确性要求极高的商业应用，如电商客服、企业知识库、金融顾问等。</li>
+</ul>
+<h1 id="总结与选型指南"><a href="#总结与选型指南" class="headerlink" title="总结与选型指南"></a>总结与选型指南</h1><p>没有银弹，只有最适合的架构。在实战中，这 8 种记忆方式通常会组合使用：</p>
+<ul>
+<li><strong>MVP 阶段</strong>：<code>对话缓冲</code> 打底，快速出活。</li>
+<li><strong>多轮对话产品</strong>：<code>缓冲 + 向量化语义记忆</code>，让 Agent 拥有长期模糊记忆。</li>
+<li><strong>有精确事实需求</strong>：在向量库基础上，增加 <code>关键事实档案</code>。</li>
+<li><strong>超长上下文&#x2F;多会话</strong>：引入 <code>反思与总结</code> 机制。</li>
+<li><strong>强个性化应用</strong>：必须加 <code>用户画像记忆</code>。</li>
+<li><strong>复杂推理任务</strong>：代码里实现 <code>工作记忆草稿本</code>。</li>
+<li><strong>商业化&#x2F;对幻觉零容忍</strong>：直接上 <code>混合检索记忆</code>。</li>
+</ul>
+
                 
               </div>
             
@@ -411,7 +653,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/swift/" class="category-chain-item">swift</a>
+  <a href="/categories/agent/" class="category-chain-item">agent</a>
   
   
 
@@ -426,9 +668,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/swift/" class="print-no-link">#swift</a>
+        <a href="/tags/agent/" class="print-no-link">#agent</a>
       
-        <a href="/tags/%E5%B1%9E%E6%80%A7%E4%BF%AE%E9%A5%B0%E5%99%A8/" class="print-no-link">#属性修饰器</a>
+        <a href="/tags/agent-%E8%AE%B0%E5%BF%86/" class="print-no-link">#agent 记忆</a>
       
     </div>
   
@@ -440,8 +682,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>swift常见的属性修饰器</div>
-      <div>https://wttch96.github.io/post/swift/swift常见的属性修饰器.html</div>
+      <div>Agent 记忆完全指南：8种核心记忆方式深度解析</div>
+      <div>https://wttch96.github.io/post/agent/Agent 记忆完全指南.html</div>
     </div>
     <div class="license-meta">
       
@@ -453,7 +695,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月7日</div>
+          <div>2026年7月24日</div>
         </div>
       
       
@@ -485,18 +727,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/post/%E6%9E%B6%E6%9E%84/%E8%BD%AF%E4%BB%B6%E5%85%AC%E5%8F%B8%E5%8F%AF%E9%87%8D%E7%94%A8%E5%BA%93%E7%9A%84%E5%BB%BA%E8%AE%BE.html" title="软件公司可重用库的建设">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">软件公司可重用库的建设</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/post/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/gradle%E5%B0%8F%E8%AE%B0.html" title="gradle小记">
-                        <span class="hidden-mobile">gradle小记</span>
+                      <a href="/post/swift/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%8D%8F%E5%8F%98%E4%B8%8E%E9%80%86%E5%8F%98.html" title="深入理解协变与逆变：从 Java 到 Swift">
+                        <span class="hidden-mobile">深入理解协变与逆变：从 Java 到 Swift</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
