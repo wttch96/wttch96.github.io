@@ -29,7 +29,7 @@
 <meta property="og:description" content="在构建智能体（Agent）时，记忆系统是其大脑的核心组件。没有记忆，Agent 只会是金鱼，转头就忘。记忆不仅决定了对话的连贯性，更影响了 Agent 的个性化、学习能力和任务执行效率。本文将深入剖析 Agent 的 8 种主流记忆方式，并配以 Mermaid 示意图，助你彻底掌握记忆架构。  分类总览在深入细节前，先宏观分类。Agent 记忆通常分为三大类： mindmap   root((A">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-24T12:23:00.000Z">
-<meta property="article:modified_time" content="2026-07-24T06:03:33.475Z">
+<meta property="article:modified_time" content="2026-07-24T06:36:46.290Z">
 <meta property="article:author" content="Wttch">
 <meta property="article:tag" content="agent">
 <meta property="article:tag" content="agent 记忆">
@@ -352,7 +352,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k 字
+          3.9k 字
         
       </span>
     
@@ -363,7 +363,7 @@
         
         
         
-          34 分钟
+          33 分钟
         
       </span>
     
@@ -668,7 +668,7 @@
 <li><strong>复杂推理任务</strong>：代码里实现 <code>工作记忆草稿本</code>。</li>
 <li><strong>商业化&#x2F;对幻觉零容忍</strong>：直接上 <code>混合检索记忆</code>。</li>
 </ul>
-<script type="module"> import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';	mermaid.initialize({startOnLoad: true, flowchart: {curve: 'linear'}}); </script>
+
                 
               </div>
             
@@ -837,6 +837,21 @@
 
   
 
+
+
+  <script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default","startOnLoad":true});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
 
 
 
